@@ -1,0 +1,56 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/*.yaml (Connect error envelope)
+format: connect-rpc
+description: >-
+  The Virtru DSP (OpenTDF) services are Connect-protocol RPCs. Every operation returns a
+  uniform error envelope (`connect.error`) with a `code` (Connect/gRPC canonical code) and a
+  human-readable `message`, rather than per-status RFC 9457 problem+json documents. The
+  envelope is declared as the `default` (Error) response on all 116 operations across the
+  15 OpenAPI specs in this repo.
+envelope:
+  schema: connect.error
+  fields:
+    - name: code
+      description: Connect/gRPC canonical status code string (e.g. invalid_argument, not_found).
+    - name: message
+      description: Human-readable error detail.
+    - name: detail
+      description: Optional structured error detail payload.
+problems:
+  - code: invalid_argument
+    http: 400
+    title: Invalid argument
+    remediation: Correct malformed request fields (attribute FQN, policy IDs, selectors).
+  - code: unauthenticated
+    http: 401
+    title: Missing or invalid OIDC token
+    remediation: Obtain a fresh Bearer token from the configured IdP and retry.
+  - code: permission_denied
+    http: 403
+    title: ABAC decision denied
+    remediation: Entity lacks the entitlements required by the resource's attribute policy.
+  - code: not_found
+    http: 404
+    title: Resource not found
+    remediation: Verify the namespace / attribute / value / KAS id exists and is active.
+  - code: already_exists
+    http: 409
+    title: Resource already exists
+    remediation: A namespace/attribute with the same FQN already exists.
+  - code: failed_precondition
+    http: 412
+    title: Failed precondition
+    remediation: Resource is deactivated or in a state that disallows the operation.
+  - code: resource_exhausted
+    http: 429
+    title: Rate limited / quota exceeded
+    remediation: Back off and retry.
+  - code: internal
+    http: 500
+    title: Internal error
+    remediation: Retry; if persistent, contact support with the request id.
+  - code: unavailable
+    http: 503
+    title: Service unavailable
+    remediation: KAS or policy service temporarily unreachable; retry with backoff.

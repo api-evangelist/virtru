@@ -1,23 +1,205 @@
 aid: virtru
 name: Virtru
-description: 'Virtru is a company surfaced as a portfolio company of bessemer-venture-partners, iconiq-capital
-  and added to the API Evangelist network as a stub for enrichment. Sector: cybersecurity. This profile
-  is a lead awaiting the enrichment pipeline.'
+description: Virtru is a data-centric security company whose Data Security Platform is built on OpenTDF,
+  the open Trusted Data Format. Applications encrypt data with attribute-based access control (ABAC) and
+  enforce who can decrypt it through Key Access Servers (KAS), independent of where the data travels —
+  email, files, SaaS, and data pipelines. The platform exposes Connect-protocol (gRPC + HTTP/JSON) services
+  for policy (namespaces, attributes, values, subject mappings), key access, authorization decisions,
+  and entity resolution, authenticated with OIDC/OAuth 2.0. Virtru maintains the open-source OpenTDF project
+  and ships SDKs for JavaScript, Go, and Java plus the otdfctl CLI. Backed by Bessemer Venture Partners
+  and ICONIQ Capital.
 url: https://raw.githubusercontent.com/api-evangelist/virtru/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - bessemer-venture-partners
 - iconiq-capital
-x-tier: stub
-x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.virtru.com/hubfs/assets/images/logos/virtru/logomark/blue/virtru_LOGOMARKMASTER_BLUE_FINAL.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Cybersecurity
-apis: []
+- Data Security
+- Encryption
+- Access Control
+- Zero Trust
+- Data Privacy
+- OpenTDF
+- Key Management
+apis:
+- aid: virtru:virtru-authorization-authorizationservice-api
+  name: Virtru authorization.AuthorizationService API
+  description: >-
+    The authorization.AuthorizationService API from Virtru — 3 operation(s) for authorization.authorizationservice.
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - authorization.AuthorizationService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-authorization-authorizationservice-api-openapi.yml
+- aid: virtru:virtru-authorization-v2-authorizationservice-api
+  name: Virtru authorization.v2.AuthorizationService API
+  description: >-
+    The authorization.v2.AuthorizationService API from Virtru — 4 operation(s) for authorization.v2.authorizationservice.
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - authorization.v2.AuthorizationService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-authorization-v2-authorizationservice-api-openapi.yml
+- aid: virtru:virtru-entityresolution-v2-entityresolutionservice-api
+  name: Virtru entityresolution.v2.EntityResolutionService API
+  description: >-
+    The entityresolution.v2.EntityResolutionService API from Virtru — 2 operation(s) for entityresolution.v2.entityresolutionservice.
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - entityresolution.v2.EntityResolutionService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-entityresolution-v2-entityresolutionservice-api-openapi.yml
+- aid: virtru:virtru-kas-accessservice-api
+  name: Virtru kas.AccessService API
+  description: Get app info from the root path
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - kas.AccessService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-kas-accessservice-api-openapi.yml
+- aid: virtru:virtru-policy-actions-actionservice-api
+  name: Virtru policy.actions.ActionService API
+  description: >-
+    The policy.actions.ActionService API from Virtru — 5 operation(s) for policy.actions.actionservice.
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - policy.actions.ActionService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-policy-actions-actionservice-api-openapi.yml
+- aid: virtru:virtru-policy-attributes-attributesservice-api
+  name: Virtru policy.attributes.AttributesService API
+  description: >-
+    /
+
+    / Attribute Service
+
+    /
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - policy.attributes.AttributesService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-policy-attributes-attributesservice-api-openapi.yml
+- aid: virtru:virtru-policy-kasregistry-keyaccessserverregistryservice-api
+  name: Virtru policy.kasregistry.KeyAccessServerRegistryService API
+  description: >-
+    The policy.kasregistry.KeyAccessServerRegistryService API from Virtru — 14 operation(s) for policy.kasregistry.keyaccessserverregistryservice.
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - policy.kasregistry.KeyAccessServerRegistryService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-policy-kasregistry-keyaccessserverregistryservice-api-openapi.yml
+- aid: virtru:virtru-policy-keymanagement-keymanagementservice-api
+  name: Virtru policy.keymanagement.KeyManagementService API
+  description: >-
+    The policy.keymanagement.KeyManagementService API from Virtru — 5 operation(s) for policy.keymanagement.keymanagementservice.
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - policy.keymanagement.KeyManagementService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-policy-keymanagement-keymanagementservice-api-openapi.yml
+- aid: virtru:virtru-policy-namespaces-namespaceservice-api
+  name: Virtru policy.namespaces.NamespaceService API
+  description: >-
+    The policy.namespaces.NamespaceService API from Virtru — 9 operation(s) for policy.namespaces.namespaceservice.
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - policy.namespaces.NamespaceService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-policy-namespaces-namespaceservice-api-openapi.yml
+- aid: virtru:virtru-policy-obligations-service-api
+  name: Virtru policy.obligations.Service API
+  description: >-
+    /
+
+    / Obligation Service
+
+    /
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - policy.obligations.Service
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-policy-obligations-service-api-openapi.yml
+- aid: virtru:virtru-policy-registeredresources-registeredresourcesservice-api
+  name: Virtru policy.registeredresources.RegisteredResourcesService API
+  description: Registered Resources
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - policy.registeredresources.RegisteredResourcesService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-policy-registeredresources-registeredresourcesservice-api-openapi.yml
+- aid: virtru:virtru-policy-resourcemapping-resourcemappingservice-api
+  name: Virtru policy.resourcemapping.ResourceMappingService API
+  description: Resource Mapping Groups
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - policy.resourcemapping.ResourceMappingService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-policy-resourcemapping-resourcemappingservice-api-openapi.yml
+- aid: virtru:virtru-policy-subjectmapping-subjectmappingservice-api
+  name: Virtru policy.subjectmapping.SubjectMappingService API
+  description: >-
+    The policy.subjectmapping.SubjectMappingService API from Virtru — 12 operation(s) for policy.subjectmapping.subjectmappingservice.
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - policy.subjectmapping.SubjectMappingService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-policy-subjectmapping-subjectmappingservice-api-openapi.yml
+- aid: virtru:virtru-wellknownconfiguration-wellknownservice-api
+  name: Virtru wellknownconfiguration.WellKnownService API
+  description: >-
+    The wellknownconfiguration.WellKnownService API from Virtru — 1 operation(s) for wellknownconfiguration.wellknownservice.
+  humanURL: https://opentdf.io
+  baseURL: https://api.virtru.com
+  tags:
+  - wellknownconfiguration.WellKnownService
+  properties:
+  - type: OpenAPI
+    url: openapi/virtru-wellknownconfiguration-wellknownservice-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +208,74 @@ maintainers:
 common:
 - type: Website
   url: https://www.virtru.com/
+- type: DeveloperPortal
+  url: https://www.virtru.com/developers/get-started
+- type: Documentation
+  url: https://opentdf.io
+- type: APIReference
+  url: https://opentdf.io/OpenAPI-clients
+- type: GettingStarted
+  url: https://opentdf.io/quickstart
+- type: GitHubOrganization
+  url: https://github.com/opentdf
+- type: Blog
+  url: https://www.virtru.com/blog
+- type: Pricing
+  url: https://www.virtru.com/pricing
+- type: PrivacyPolicy
+  url: https://www.virtru.com/privacy-policy
+- type: TermsOfService
+  url: https://www.virtru.com/terms-of-service
+- type: Packages
+  url: packages/virtru-packages.yml
+- type: SDKs
+  url: packages/virtru-packages.yml
+- type: CLI
+  url: cli/virtru-cli.yml
+- type: Authentication
+  url: authentication/virtru-authentication.yml
+- type: Conventions
+  url: conventions/virtru-conventions.yml
+- type: ErrorCatalog
+  url: errors/virtru-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/virtru-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/virtru-lifecycle.yml
+- type: ChangeLog
+  url: changelog/virtru-changelog.yml
+- type: DataModel
+  url: data-model/virtru-data-model.yml
+- type: Conformance
+  url: conformance/virtru-conformance.yml
+- type: Compliance
+  url: https://trust.virtru.com/
+- type: Protobuf
+  url: grpc/virtru-kas.proto
+- type: MCPServer
+  url: mcp/virtru-mcp.yml
+- type: LLMsTxt
+  url: llms/virtru-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/virtru-kas-overlay.yaml
+- type: Overlay
+  url: overlays/virtru-policy-attributes-overlay.yaml
+- type: WellKnown
+  url: well-known/virtru-well-known.yml
+- type: AgenticAccess
+  url: agentic-access/virtru-agentic-access.yml
+- type: TrustCenter
+  url: security/virtru-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/virtru-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.virtru.com/responsible-disclosure/
+- type: DomainSecurity
+  url: security/virtru-domain-security.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 44
+  pass: local-v1

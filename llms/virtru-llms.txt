@@ -1,0 +1,42 @@
+# Virtru
+
+> Virtru is a data-centric security company whose Data Security Platform is built on OpenTDF (the open Trusted Data Format). It lets applications encrypt data with attribute-based access control (ABAC) and enforce who can decrypt it via Key Access Servers (KAS), independent of where the data travels. Backed by Bessemer Venture Partners and ICONIQ Capital.
+
+## APIs
+The platform is exposed as Connect-protocol (gRPC + HTTP/JSON) services. 15 OpenAPI 3.1 specs (116 operations) are captured in this repo.
+
+- [Key Access Service (KAS)](openapi/virtru-kas-openapi.yaml): PublicKey, LegacyPublicKey, Rewrap — key release/rewrap gated by ABAC.
+- [Authorization v2](openapi/virtru-authorization-v2-openapi.yaml): GetDecision, GetDecisionBulk, GetEntitlements — ABAC access decisions.
+- [Entity Resolution v2](openapi/virtru-entity-resolution-v2-openapi.yaml): resolve entities to attributes.
+- [Policy: Attributes](openapi/virtru-policy-attributes-openapi.yaml): define attributes, values, and KAS grants.
+- [Policy: Namespaces](openapi/virtru-policy-namespaces-openapi.yaml): manage attribute namespaces.
+- [Policy: Subject Mapping](openapi/virtru-policy-subject-mapping-openapi.yaml): map subjects to attribute values.
+- [Policy: Resource Mapping](openapi/virtru-policy-resource-mapping-openapi.yaml): tag resources to attributes.
+- [Policy: KAS Registry](openapi/virtru-policy-kas-registry-openapi.yaml): register Key Access Servers and keys.
+- [Well-Known Configuration](openapi/virtru-wellknown-configuration-openapi.yaml): platform/OIDC discovery.
+
+## Specs
+- [gRPC / proto definitions](grpc/): kas, authorization v2, policy attributes/subject-mapping/namespaces/objects, entity-resolution v2, well-known.
+- [Data model](data-model/virtru-data-model.yml): namespace → attribute → value → subject-mapping / KAS graph.
+
+## SDKs & tools
+- [Packages](packages/virtru-packages.yml): JS (@opentdf/sdk), Go (github.com/opentdf/platform/sdk), Java (io.opentdf.platform:sdk), NiFi processors.
+- [CLI](cli/virtru-cli.yml): otdfctl — encrypt/decrypt + policy administration.
+
+## Docs
+- [Get started](https://www.virtru.com/developers/get-started)
+- [OpenTDF docs](https://opentdf.io)
+- [Quickstart](https://opentdf.io/quickstart)
+- [Architecture](https://opentdf.io/architecture)
+- [TDF spec](https://github.com/virtru/tdf-spec)
+- [GitHub: OpenTDF](https://github.com/opentdf) / [Virtru](https://github.com/virtru)
+
+## Auth, errors & lifecycle
+- [Authentication](authentication/virtru-authentication.yml): OIDC / OAuth 2.0 Bearer; PKCS#11 for HSM.
+- [Errors](errors/virtru-problem-types.yml): Connect error envelope (code + message).
+- [Conventions](conventions/virtru-conventions.yml): transport, pagination, versioning, ABAC.
+- [Lifecycle](lifecycle/virtru-lifecycle.yml) / [Changelog](changelog/virtru-changelog.yml): per-module semver releases.
+
+## Trust
+- [Trust Center](https://trust.virtru.com/): SOC 2, PCI DSS, HIPAA, FedRAMP, FIPS 140.
+- [Responsible disclosure](https://www.virtru.com/responsible-disclosure/)

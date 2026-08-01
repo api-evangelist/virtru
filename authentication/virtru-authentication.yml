@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.virtru.com/developers/get-started
+docs: https://opentdf.io/quickstart
+description: >-
+  The Virtru Data Security Platform (OpenTDF) authenticates all service calls with
+  OpenID Connect (OIDC) / OAuth 2.0. Clients obtain an access token from the platform's
+  configured identity provider (Keycloak by default) and present it as a Bearer token on
+  every Connect/gRPC request to the Policy, Key Access (KAS), Authorization, Entity
+  Resolution and Well-Known services. Key operations additionally use PKCS#11 for HSM-backed
+  key material and ABAC (attribute-based access control) for authorization decisions.
+summary:
+  types: [oauth2, openIdConnect]
+  api_key_in: []
+  oauth2_flows: [clientCredentials, authorizationCode]
+schemes:
+  - name: OIDC
+    type: openIdConnect
+    description: >-
+      OpenID Connect discovery via the platform Well-Known configuration service. Tokens
+      issued by the deployment's IdP (Keycloak by default).
+    sources: [docs]
+  - name: OAuth2
+    type: oauth2
+    flows:
+      - flow: clientCredentials
+        description: Machine-to-machine service auth for SDKs and pipelines.
+      - flow: authorizationCode
+        description: Interactive user auth for web/console clients.
+    sources: [docs]
+  - name: PKCS11
+    type: mutualTLS
+    description: >-
+      PKCS#11 HSM interface for KAS key wrapping/unwrapping (hardware-backed key custody).
+    sources: [docs]
+notes: >-
+  The published Connect-protocol OpenAPI specs do not declare securitySchemes inline
+  (auth is enforced at the gateway), so this profile is sourced from the OpenTDF
+  platform authentication documentation rather than derived from the spec.

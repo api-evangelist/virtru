@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/opentdf/platform/releases
+description: >-
+  Versioning and operational lifecycle for the Virtru Data Security Platform (OpenTDF).
+  Services are versioned in the URL/proto package path (e.g. authorization.v2, entityresolution.v2)
+  and released as tagged modules (sdk/vX.Y.Z, service/vX.Y.Z) on the opentdf/platform repo.
+versioning:
+  scheme: package-path + semver-tags
+  current: v2 (authorization, entityresolution); v1 (policy, kas)
+  docs: https://github.com/opentdf/platform/releases
+deprecation:
+  policy_url: https://github.com/opentdf/platform/blob/main/README.md
+  notes: >-
+    Superseded RPCs are retained as v1 alongside v2 (e.g. AuthorizationService v1 + v2,
+    kas LegacyPublicKey vs PublicKey) rather than removed, giving a soft-deprecation path.
+  sunset_header: false
+status_page: null
+deprecated_operations:
+  - openapi/virtru-kas-openapi.yaml#kas.AccessService.LegacyPublicKey
+  - openapi/virtru-authorization-openapi.yaml (v1, superseded by authorization.v2)

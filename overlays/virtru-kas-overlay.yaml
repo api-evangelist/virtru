@@ -1,0 +1,16 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Virtru KAS
+  version: 1.0.0
+extends: openapi/virtru-kas-openapi.yaml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: virtru
+      x-apievangelist-product: Key Access Service (KAS)
+      x-apievangelist-auth: oidc-bearer
+      x-apievangelist-standards: [tdf, oidc, nist-sp-800-162-abac]
+      x-apievangelist-transport: connect-rpc
+      description: >-
+        OpenTDF Key Access Service — releases and rewraps data keys for TDF-protected
+        content, gated by attribute-based access control decisions.

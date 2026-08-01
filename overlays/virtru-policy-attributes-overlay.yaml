@@ -1,0 +1,15 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Virtru Policy Attributes
+  version: 1.0.0
+extends: openapi/virtru-policy-attributes-openapi.yaml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: virtru
+      x-apievangelist-product: Policy — Attributes
+      x-apievangelist-auth: oidc-bearer
+      x-apievangelist-transport: connect-rpc
+      description: >-
+        OpenTDF Attributes service — define attribute definitions and values, and grant
+        them to Key Access Servers, forming the ABAC policy the platform enforces.

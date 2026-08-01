@@ -1,0 +1,671 @@
+syntax = "proto3";
+
+package policy.attributes;
+
+import "buf/validate/validate.proto";
+import "common/common.proto";
+import "google/protobuf/wrappers.proto";
+import "policy/objects.proto";
+import "policy/selectors.proto";
+import "policy/subjectmapping/subject_mapping.proto";
+
+/*
+   Key Access Server Grants
+*/
+// Deprecated
+message AttributeKeyAccessServer {
+  option deprecated = true;
+  // Required
+  string attribute_id = 1 [(buf.validate.field).string.uuid = true];
+  // Required
+  string key_access_server_id = 2 [(buf.validate.field).string.uuid = true];
+}
+
+/*
+   Key Maps
+*/
+
+message ValueKeyAccessServer {
+  option deprecated = true;
+  // Required
+  string value_id = 1 [(buf.validate.field).string.uuid = true];
+  // Required
+  string key_access_server_id = 2 [(buf.validate.field).string.uuid = true];
+}
+
+message AttributeKey {
+  // Required
+  string attribute_id = 1 [
+    (buf.validate.field).string.uuid = true,
+    (buf.validate.field).required = true
+  ];
+  // Required
+  string key_id = 2 [
+    (buf.validate.field).string.uuid = true,
+    (buf.validate.field).required = true
+  ];
+}
+
+message ValueKey {
+  // Required
+  string value_id = 1 [
+    (buf.validate.field).string.uuid = true,
+    (buf.validate.field).required = true
+  ];
+  // Required (The id listed in the AsymmetricKeys object)
+  string key_id = 2 [
+    (buf.validate.field).string.uuid = true,
+    (buf.validate.field).required = true
+  ];
+}
+
+/*
+   Attribute Service Definitions
+*/
+
+enum SortAttributesType {
+  SORT_ATTRIBUTES_TYPE_UNSPECIFIED = 0;
+  SORT_ATTRIBUTES_TYPE_NAME = 1;
+  SORT_ATTRIBUTES_TYPE_CREATED_AT = 2;
+  SORT_ATTRIBUTES_TYPE_UPDATED_AT = 3;
+}
+
+message AttributesSort {
+  SortAttributesType field = 1 [(buf.validate.field).enum.defined_only = true];
+  policy.SortDirection direction = 2 [(buf.validate.field).enum.defined_only = true];
+}
+
+message ListAttributesRequest {
+  // Optional
+  // ACTIVE by default when not specified
+  common.ActiveStateEnum state = 1;
+  // Optional
+  // Namespace ID or name
+  string namespace = 2;
+
+  // Optional
+  policy.PageRequest pagination = 10;
+  // Optional - CONSTRAINT: max 1 item
+  // Sort defaults:
+  //   - direction UNSPECIFIED defaults to DESC for the specified field
+  //   - field UNSPECIFIED defaults to created_at with the specified direction
+  //   - both UNSPECIFIED or sort omitted defaults to created_at DESC
+  repeated AttributesSort sort = 11 [(buf.validate.field).repeated.max_items = 1];
+
+  // Optional
+  policy.Search search = 12;
+}
+message ListAttributesResponse {
+  repeated policy.Attribute attributes = 1;
+
+  policy.PageResponse pagination = 10;
+}
+
+message GetAttributeRequest {
+  // Temporary message level validation until we remove the deprecated id field
+  option (buf.validate.message).cel = {
+    id: "exclusive_fields"
+    expression: "!(has(this.id) && (has(this.attribute_id) || has(this.fqn)))"
+    message: "Either use deprecated 'id' field or one of 'attribute_id' or 'fqn', but not both"
+  };
+
+  option (buf.validate.message).cel = {
+    id: "required_fields"
+    expression: "has(this.id) || has(this.attribute_id) || has(this.fqn)"
+    message: "Either id or one of attribute_id or fqn must be set"
+  };
+
+  // Deprecated: utilize identifier
+  string id = 1 [
+    deprecated = true,
+    (buf.validate.field).ignore = IGNORE_IF_ZERO_VALUE,
+    (buf.validate.field).string.uuid = true
+  ];
+
+  oneof identifier {
+    //option (buf.validate.oneof).required = true; // TODO: enable this when we remove the deprecated field
+    string attribute_id = 2 [(buf.validate.field).string.uuid = true];
+    string fqn = 3 [(buf.validate.field).string = {
+      min_len: 1
+      uri: true
+    }];
+  }
+}
+message GetAttributeResponse {
+  policy.Attribute attribute = 1;
+}
+
+message CreateAttributeRequest {
+  // Required
+  string namespace_id = 1 [(buf.validate.field).string.uuid = true];
+  // Required
+  string name = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.max_len = 253,
+    (buf.validate.field).cel = {
+      id: "attribute_name_format"
+      message: "Attribute name must be an alphanumeric string, allowing hyphens and underscores but not as the first or last character. The stored attribute name will be normalized to lower case."
+      expression: "this.matches('^[a-zA-Z0-9](?:[a-zA-Z0-9_-]*[a-zA-Z0-9])?$')"
+    }
+  ];
+  // Required
+  AttributeRuleTypeEnum rule = 3 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).required = true
+  ];
+  // Optional
+  // Attribute values (when provided) must be alphanumeric strings, allowing hyphens and underscores but not as the first or last character.
+  // The stored attribute value will be normalized to lower case.
+  repeated string values = 4 [(buf.validate.field).repeated = {
+    min_items: 0
+    unique: true
+    items: {
+      string: {
+        max_len: 253
+        pattern: "^[a-zA-Z0-9](?:[a-zA-Z0-9_-]*[a-zA-Z0-9])?$"
+      }
+    }
+  }];
+
+  // Optional
+  // Setting allow_traversal=true allows TDF creation to be front-loaded, meaning a customer
+  // can create encrypted content with an attribute definitions key mapping before
+  // creating the attribute values needed to decrypt.
+  // Content will be able to be encrypted with missing attribute values,
+  // but will not be able to be decrypted until such attribute values exist.
+  google.protobuf.BoolValue allow_traversal = 5;
+
+  // Optional
+  common.MetadataMutable metadata = 100;
+}
+message CreateAttributeResponse {
+  policy.Attribute attribute = 1;
+}
+
+message UpdateAttributeRequest {
+  // Required
+  string id = 1 [(buf.validate.field).string.uuid = true];
+
+  // Optional
+  common.MetadataMutable metadata = 100;
+  common.MetadataUpdateEnum metadata_update_behavior = 101;
+}
+message UpdateAttributeResponse {
+  policy.Attribute attribute = 1;
+}
+
+message DeactivateAttributeRequest {
+  // Required
+  string id = 1 [(buf.validate.field).string.uuid = true];
+}
+message DeactivateAttributeResponse {
+  policy.Attribute attribute = 1;
+}
+
+///
+/// Value RPC messages
+///
+message GetAttributeValueRequest {
+  // Temporary message level validation until we remove the deprecated id field
+  option (buf.validate.message).cel = {
+    id: "exclusive_fields"
+    expression: "!(has(this.id) && (has(this.value_id) || has(this.fqn)))"
+    message: "Either use deprecated 'id' field or one of 'value_id' or 'fqn', but not both"
+  };
+
+  option (buf.validate.message).cel = {
+    id: "required_fields"
+    expression: "has(this.id) || has(this.value_id) || has(this.fqn)"
+    message: "Either id or one of value_id or fqn must be set"
+  };
+
+  // Deprecated: utilize identifier
+  string id = 1 [
+    deprecated = true,
+    (buf.validate.field).ignore = IGNORE_IF_ZERO_VALUE,
+    (buf.validate.field).string.uuid = true
+  ];
+
+  oneof identifier {
+    //option (buf.validate.oneof).required = true; // TODO: enable this when we remove the deprecated field
+    string value_id = 2 [(buf.validate.field).string.uuid = true];
+    string fqn = 3 [(buf.validate.field).string = {
+      min_len: 1
+      uri: true
+    }];
+  }
+}
+message GetAttributeValueResponse {
+  policy.Value value = 1;
+}
+
+message ListAttributeValuesRequest {
+  // Required
+  string attribute_id = 1 [(buf.validate.field).string.uuid = true];
+  // Optional
+  // ACTIVE by default when not specified
+  common.ActiveStateEnum state = 2;
+
+  // Optional
+  policy.PageRequest pagination = 10;
+}
+message ListAttributeValuesResponse {
+  repeated policy.Value values = 1;
+
+  policy.PageResponse pagination = 10;
+}
+
+message AttributeValueObligationTriggerRequest {
+  // Required. Existing obligation value to associate with the newly created attribute value.
+  common.IdFqnIdentifier obligation_value = 1 [(buf.validate.field).required = true];
+  // Required. Action that, together with the newly created attribute value, triggers the obligation value.
+  common.IdNameIdentifier action = 2 [(buf.validate.field).required = true];
+  // Optional. Request context for the obligation trigger.
+  policy.RequestContext context = 11;
+  // Optional. Common metadata for the obligation trigger.
+  common.MetadataMutable metadata = 100;
+}
+
+message AttributeValueSubjectMappingRequest {
+  option (buf.validate.message).cel = {
+    id: "subject_condition_set_source"
+    message: "Exactly one of existing_subject_condition_set_id or new_subject_condition_set must be provided"
+    expression: "(this.existing_subject_condition_set_id != '') != has(this.new_subject_condition_set)"
+  };
+
+  // Required. The actions permitted by subjects in this mapping.
+  repeated policy.Action actions = 1 [
+    (buf.validate.field).repeated.min_items = 1,
+    (buf.validate.field).cel = {
+      id: "action_name_or_id_not_empty"
+      message: "Action name or ID must not be empty if provided"
+      expression: "this.all(item, item.name != '' || item.id != '')"
+    }
+  ];
+
+  // Reuse an existing SubjectConditionSet.
+  string existing_subject_condition_set_id = 2 [
+    (buf.validate.field).ignore = IGNORE_IF_ZERO_VALUE,
+    (buf.validate.field).string.uuid = true
+  ];
+  // Create a new SubjectConditionSet.
+  policy.subjectmapping.SubjectConditionSetCreate new_subject_condition_set = 3;
+
+  // Optional. Namespace ID or FQN for the subject mapping.
+  // If omitted, the parent attribute's namespace is inherited.
+  option (buf.validate.message).oneof = { fields: ["namespace_id", "namespace_fqn"], required: false };
+  string namespace_id = 4 [
+    (buf.validate.field).ignore = IGNORE_IF_ZERO_VALUE,
+    (buf.validate.field).string.uuid = true
+  ];
+  string namespace_fqn = 5 [
+    (buf.validate.field).ignore = IGNORE_IF_ZERO_VALUE,
+    (buf.validate.field).string = {
+      min_len: 1
+      uri: true
+    }
+  ];
+
+  // Optional. Common metadata for the subject mapping.
+  common.MetadataMutable metadata = 100;
+}
+
+message CreateAttributeValueRequest {
+  // Required
+  string attribute_id = 1 [(buf.validate.field).string.uuid = true];
+  // Required
+  string value = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.max_len = 253,
+    (buf.validate.field).cel = {
+      id: "attribute_value_format"
+      message: "Attribute value must be an alphanumeric string, allowing hyphens and underscores but not as the first or last character. The stored attribute value will be normalized to lower case."
+      expression: "this.matches('^[a-zA-Z0-9](?:[a-zA-Z0-9_-]*[a-zA-Z0-9])?$')"
+    }
+  ];
+
+  // deprecated members on values
+  reserved "members";
+  reserved 3;
+
+  // Optional
+  // Existing obligation values to trigger for the newly created attribute value.
+  repeated AttributeValueObligationTriggerRequest obligation_triggers = 11;
+
+  // Optional
+  // Subject mappings to associate with the newly created attribute value.
+  repeated AttributeValueSubjectMappingRequest subject_mappings = 12 [(buf.validate.field).repeated.max_items = 250];
+
+  // Optional
+  // Common metadata
+  common.MetadataMutable metadata = 100;
+}
+message CreateAttributeValueResponse {
+  policy.Value value = 1;
+}
+
+message UpdateAttributeValueRequest {
+  // Required
+  string id = 1 [(buf.validate.field).string.uuid = true];
+
+  // Deprecated
+  reserved "members";
+  reserved 4;
+
+  // Optional
+  // Common metadata
+  common.MetadataMutable metadata = 100;
+  common.MetadataUpdateEnum metadata_update_behavior = 101;
+}
+message UpdateAttributeValueResponse {
+  policy.Value value = 1;
+}
+
+message DeactivateAttributeValueRequest {
+  // Required
+  string id = 1 [(buf.validate.field).string.uuid = true];
+}
+message DeactivateAttributeValueResponse {
+  policy.Value value = 1;
+}
+
+message GetAttributeValuesByFqnsRequest {
+  // Required
+  // Fully Qualified Names of attribute values (i.e. https://<namespace>/attr/<attribute_name>/value/<value_name>), normalized to lower case.
+  repeated string fqns = 1 [(buf.validate.field).repeated = {
+    min_items: 1
+    max_items: 250
+  }];
+
+  reserved 2;
+  reserved "with_value";
+}
+message GetAttributeValuesByFqnsResponse {
+  message AttributeAndValue {
+    policy.Attribute attribute = 1;
+    policy.Value value = 2;
+  }
+  // map of FQNs to complete attributes and the one selected value
+  map<string, AttributeAndValue> fqn_attribute_values = 1;
+}
+
+/*
+   Key Mappings By FQNs (client-side key split path)
+
+   Narrow read API for the client-side encrypt flow. Given attribute value FQNs,
+   returns only the information needed to build key splits: the governing
+   attribute rule and the effective mapped KAS keys resolved server-side. It does not
+   return subject mappings, resource mappings, obligations, sibling values, or
+   metadata. Prefer this over GetAttributeValuesByFqns when building splits. A
+   value that does not exist under a definition with allow_traversal resolves at
+   the definition (then namespace) level, supporting front-loaded TDF creation.
+*/
+message GetKeyMappingsByFqnsRequest {
+  // Required
+  // Fully Qualified Names of attribute values (i.e. https://<namespace>/attr/<attribute_name>/value/<value_name>), normalized to lower case.
+  repeated string fqns = 1 [(buf.validate.field).repeated = {
+    min_items: 1
+    max_items: 250
+  }];
+}
+message GetKeyMappingsByFqnsResponse {
+  message AttributeKeyMapping {
+    // the attribute rule, which governs how splits combine (any_of / all_of / hierarchy)
+    AttributeRuleTypeEnum rule = 1;
+    // effective KAS keys resolved for this value (value > definition > namespace
+    // precedence). Legacy grants are not used by this API; values configured only
+    // with grants and no kas_keys return an empty key set, and the client resolves
+    // those grants via GetAttributeValuesByFqns.
+    repeated policy.SimpleKasKey keys = 2;
+  }
+  // map of value FQN to its key mapping information, for O(1) lookup
+  map<string, AttributeKeyMapping> fqn_key_mappings = 1;
+}
+
+/*
+   Entitleable Attributes By FQNs (server-side decisioning path)
+
+   Narrow read API for Auth Service / Access PDP entitlement resolution. Given
+   attribute value FQNs, returns the parent definitions (deduped, each with its
+   rule and namespace identity) and, per requested value, the value identity and
+   the subject mappings needed to resolve entitlements. Hierarchy definitions
+   additionally carry their ordered values with subject mappings, for hierarchy
+   rule propagation. It does not return KAS keys, grants, resource mappings,
+   obligations, or metadata. A value that does not exist under a definition with
+   allow_traversal is returned with its definition and an empty value identity (no
+   value_id, no subject mappings).
+*/
+message GetEntitleableAttributesByFqnsRequest {
+  // Required
+  // Fully Qualified Names of attribute values (i.e. https://<namespace>/attr/<attribute_name>/value/<value_name>), normalized to lower case.
+  repeated string fqns = 1 [(buf.validate.field).repeated = {
+    min_items: 1
+    max_items: 250
+  }];
+}
+message GetEntitleableAttributesByFqnsResponse {
+  // An attribute value plus the subject mappings that entitle it.
+  message EntitleableValue {
+    // the attribute value FQN
+    string fqn = 1;
+    // identity of the attribute value
+    string value_id = 2;
+    // subject mappings used to resolve entitlements for this value
+    repeated policy.SubjectMapping subject_mappings = 3;
+  }
+  // An attribute definition referenced by one or more requested value FQNs,
+  // returned once regardless of how many of its values were requested.
+  message EntitleableDefinition {
+    // the attribute rule, which drives rule logic during decisioning
+    AttributeRuleTypeEnum rule = 1;
+    // the definition's values in order, each with its subject mappings. Populated
+    // ONLY for hierarchy definitions (whose decisioning needs sibling values and
+    // their mappings to propagate entitlement up the chain). Empty for any_of /
+    // all_of, where the requested per-value entries below carry what's needed.
+    repeated EntitleableValue values = 2;
+    // the definition's namespace identity (id and fqn), needed for
+    // namespaced-policy decisioning and registered-resource matching. Only the
+    // identity is populated; grants, keys, and metadata are not.
+    policy.Namespace namespace = 3;
+  }
+  message EntitleableAttribute {
+    // the FQN of the parent definition, a key into `definitions`
+    string definition_fqn = 1;
+    // the requested attribute value plus its subject mappings
+    EntitleableValue value = 2;
+  }
+  // map of definition FQN to its definition, returned once each (deduped)
+  map<string, EntitleableDefinition> definitions = 1;
+  // map of requested value FQN to its value and parent definition reference, for O(1) lookup
+  map<string, EntitleableAttribute> fqn_entitleable_attributes = 2;
+}
+
+/*
+   Assign Key Access Server (KAS Grant) to Attribute and Value
+*/
+
+// Deprecated: utilize AssignPublicKeyToAttributeRequest
+message AssignKeyAccessServerToAttributeRequest {
+  option deprecated = true;
+
+  // Required
+  AttributeKeyAccessServer attribute_key_access_server = 1;
+}
+
+message AssignKeyAccessServerToAttributeResponse {
+  option deprecated = true;
+  AttributeKeyAccessServer attribute_key_access_server = 1;
+}
+
+// Deprecated: utilize RemovePublicKeyFromAttributeRequest
+message RemoveKeyAccessServerFromAttributeRequest {
+  option deprecated = true;
+  // Required
+  AttributeKeyAccessServer attribute_key_access_server = 1;
+}
+
+message RemoveKeyAccessServerFromAttributeResponse {
+  option deprecated = true;
+  AttributeKeyAccessServer attribute_key_access_server = 1;
+}
+
+// Deprecated: utilize AssignPublicKeyToValueRequest
+message AssignKeyAccessServerToValueRequest {
+  option deprecated = true;
+  // Required
+  ValueKeyAccessServer value_key_access_server = 1;
+}
+
+message AssignKeyAccessServerToValueResponse {
+  option deprecated = true;
+  ValueKeyAccessServer value_key_access_server = 1;
+}
+
+// Deprecated: utilize RemovePublicKeyFromValueRequest
+message RemoveKeyAccessServerFromValueRequest {
+  option deprecated = true;
+  // Required
+  ValueKeyAccessServer value_key_access_server = 1;
+}
+
+message RemoveKeyAccessServerFromValueResponse {
+  option deprecated = true;
+  ValueKeyAccessServer value_key_access_server = 1;
+}
+
+/*
+   Assign Key to Attribute and Value
+*/
+
+message AssignPublicKeyToAttributeRequest {
+  // Required
+  AttributeKey attribute_key = 1 [(buf.validate.field).required = true];
+}
+
+message AssignPublicKeyToAttributeResponse {
+  // Required
+  AttributeKey attribute_key = 1;
+}
+
+message RemovePublicKeyFromAttributeRequest {
+  // Required
+  AttributeKey attribute_key = 1 [(buf.validate.field).required = true];
+}
+
+message RemovePublicKeyFromAttributeResponse {
+  // Required
+  AttributeKey attribute_key = 1;
+}
+
+message AssignPublicKeyToValueRequest {
+  // Required
+  ValueKey value_key = 1 [(buf.validate.field).required = true];
+}
+
+message AssignPublicKeyToValueResponse {
+  // Required
+  ValueKey value_key = 1;
+}
+
+message RemovePublicKeyFromValueRequest {
+  // Required
+  ValueKey value_key = 1 [(buf.validate.field).required = true];
+}
+
+message RemovePublicKeyFromValueResponse {
+  // Required
+  ValueKey value_key = 1;
+}
+
+///
+/// Attribute Service
+///
+service AttributesService {
+  /*--------------------------------------*
+   * Attribute RPCs
+   *---------------------------------------*/
+  rpc ListAttributes(ListAttributesRequest) returns (ListAttributesResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  // Deprecated
+  // Use GetAttribute
+  rpc ListAttributeValues(ListAttributeValuesRequest) returns (ListAttributeValuesResponse) {
+    option deprecated = true;
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+
+  rpc GetAttribute(GetAttributeRequest) returns (GetAttributeResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  // Deprecated: Use GetKeyMappingsByFqns for client-side key splits and
+  // GetEntitleableAttributesByFqns for server-side entitlement resolution.
+  rpc GetAttributeValuesByFqns(GetAttributeValuesByFqnsRequest) returns (GetAttributeValuesByFqnsResponse) {
+    option deprecated = true;
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  // Returns only key-mapping information (rule and effective KAS keys) for the
+  // requested attribute value FQNs, for client-side key split construction.
+  rpc GetKeyMappingsByFqns(GetKeyMappingsByFqnsRequest) returns (GetKeyMappingsByFqnsResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  // Returns only entitlement-relevant information (rule, value identity, ordered
+  // definition values, and subject mappings) for the requested attribute value
+  // FQNs, for server-side decisioning / entitlement resolution.
+  rpc GetEntitleableAttributesByFqns(GetEntitleableAttributesByFqnsRequest) returns (GetEntitleableAttributesByFqnsResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+
+  rpc CreateAttribute(CreateAttributeRequest) returns (CreateAttributeResponse) {}
+
+  rpc UpdateAttribute(UpdateAttributeRequest) returns (UpdateAttributeResponse) {}
+
+  rpc DeactivateAttribute(DeactivateAttributeRequest) returns (DeactivateAttributeResponse) {}
+
+  /*--------------------------------------*
+   * Value RPCs
+   *---------------------------------------*/
+  rpc GetAttributeValue(GetAttributeValueRequest) returns (GetAttributeValueResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+
+  rpc CreateAttributeValue(CreateAttributeValueRequest) returns (CreateAttributeValueResponse) {}
+
+  rpc UpdateAttributeValue(UpdateAttributeValueRequest) returns (UpdateAttributeValueResponse) {}
+
+  rpc DeactivateAttributeValue(DeactivateAttributeValueRequest) returns (DeactivateAttributeValueResponse) {}
+
+  /*--------------------------------------*
+   * Attribute <> Key Access Server RPCs
+   *---------------------------------------*/
+  // Deprecated: utilize AssignPublicKeyToAttribute
+  rpc AssignKeyAccessServerToAttribute(AssignKeyAccessServerToAttributeRequest) returns (AssignKeyAccessServerToAttributeResponse) {
+    option deprecated = true;
+  }
+
+  // Deprecated: utilize RemovePublicKeyFromAttribute
+  rpc RemoveKeyAccessServerFromAttribute(RemoveKeyAccessServerFromAttributeRequest) returns (RemoveKeyAccessServerFromAttributeResponse) {
+    option deprecated = true;
+  }
+
+  // Deprecated: utilize AssignPublicKeyToValue
+  rpc AssignKeyAccessServerToValue(AssignKeyAccessServerToValueRequest) returns (AssignKeyAccessServerToValueResponse) {
+    option deprecated = true;
+  }
+
+  // Deprecated: utilize RemovePublicKeyFromValue
+  rpc RemoveKeyAccessServerFromValue(RemoveKeyAccessServerFromValueRequest) returns (RemoveKeyAccessServerFromValueResponse) {
+    option deprecated = true;
+  }
+
+  /*--------------------------------------*
+   * Attribute <> Key RPCs
+   *---------------------------------------*/
+
+  rpc AssignPublicKeyToAttribute(AssignPublicKeyToAttributeRequest) returns (AssignPublicKeyToAttributeResponse) {}
+
+  rpc RemovePublicKeyFromAttribute(RemovePublicKeyFromAttributeRequest) returns (RemovePublicKeyFromAttributeResponse) {}
+
+  rpc AssignPublicKeyToValue(AssignPublicKeyToValueRequest) returns (AssignPublicKeyToValueResponse) {}
+
+  rpc RemovePublicKeyFromValue(RemovePublicKeyFromValueRequest) returns (RemovePublicKeyFromValueResponse) {}
+}

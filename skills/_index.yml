@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/*.yaml
+description: >-
+  Packaged Agent Skills for the Virtru Data Security Platform (OpenTDF), each grounded in
+  real operationIds verified against the published OpenAPI specs in this repo.
+skills:
+  - file: virtru-author-attribute-policy.md
+    name: Author an attribute-based access policy
+    api: openapi/virtru-policy-attributes-openapi.yaml
+    operations:
+      - policy.namespaces.NamespaceService.CreateNamespace
+      - policy.attributes.AttributesService.CreateAttribute
+      - policy.attributes.AttributesService.CreateAttributeValue
+      - policy.subjectmapping.SubjectMappingService.CreateSubjectMapping
+  - file: virtru-check-access-decision.md
+    name: Check an access decision and rewrap a key
+    api: openapi/virtru-authorization-v2-openapi.yaml
+    operations:
+      - authorization.v2.AuthorizationService.GetEntitlements
+      - authorization.v2.AuthorizationService.GetDecision
+      - kas.AccessService.PublicKey
+      - kas.AccessService.Rewrap

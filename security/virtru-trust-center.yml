@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: searched
+probe: true
+source: https://trust.virtru.com/
+url: https://trust.virtru.com/
+certifications:
+- SOC 2
+- PCI DSS
+- HIPAA
+- FedRAMP
+- FIPS 140
+evidence:
+- source: https://trust.virtru.com/
+  keywords:
+  - soc 2
+  - soc2
+  - pci dss
+  - pci-dss
+  - hipaa
+  - fedramp
+  - trust center

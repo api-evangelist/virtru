@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/opentdf/platform/releases
+description: >-
+  The Virtru Data Security Platform ships as the OpenTDF platform, released as independently
+  tagged modules (sdk, service, otdfctl CLI, protocol/go, lib/fixtures) on GitHub with
+  semantic-version tags and generated release notes.
+scheme: semver-per-module
+components:
+  - sdk
+  - service
+  - otdfctl
+  - protocol/go
+  - lib/fixtures
+entries:
+  - version: sdk/v0.27.0
+    date: '2026-07-21'
+    highlights: OpenTDF SDK release.
+  - version: protocol/go/v0.39.0
+    date: '2026-07-21'
+    highlights: Generated Go protocol bindings.
+  - version: service/v0.20.0
+    date: '2026-07-07'
+    highlights: Platform service release (policy, kas, authorization, entityresolution).
+  - version: otdfctl/v0.35.0
+    date: '2026-07-07'
+    highlights: OpenTDF CLI release.
+  - version: sdk/v0.26.0
+    date: '2026-07-02'
+    highlights: OpenTDF SDK release.
+  - version: service/v0.19.0
+    date: '2026-07-01'
+    highlights: Platform service release.

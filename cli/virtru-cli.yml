@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/opentdf/otdfctl
+description: >-
+  otdfctl is the official OpenTDF command-line tool for the Virtru Data Security Platform.
+  It administers policy (namespaces, attributes, values, subject mappings, KAS registry)
+  and performs TDF encrypt/decrypt against a running platform, authenticating via OIDC.
+name: otdfctl
+repo: https://github.com/opentdf/otdfctl
+docs: https://opentdf.io
+latest: otdfctl/v0.35.0
+install:
+  - method: release-binary
+    detail: Download from https://github.com/opentdf/otdfctl/releases
+  - method: go
+    detail: go install github.com/opentdf/otdfctl@latest
+auth:
+  method: oidc
+  detail: otdfctl auth client-credentials / auth code login against the platform IdP.
+command_groups:
+  - name: encrypt
+    summary: Encrypt a file/stream into a TDF with attribute policy.
+  - name: decrypt
+    summary: Decrypt a TDF (KAS rewrap) subject to ABAC entitlement.
+  - name: policy attributes
+    summary: Create/list/update/deactivate attribute definitions and values.
+  - name: policy namespaces
+    summary: Manage attribute namespaces.
+  - name: policy subject-mappings
+    summary: Manage subject mappings and subject condition sets.
+  - name: policy kas-registry
+    summary: Register and manage Key Access Servers and keys.
+  - name: policy resource-mappings
+    summary: Manage resource mappings / tagging.
+  - name: auth
+    summary: OIDC client-credentials and interactive login.

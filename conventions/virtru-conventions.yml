@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/*.yaml + https://opentdf.io
+description: >-
+  Cross-cutting request/response semantics for the Virtru Data Security Platform (OpenTDF),
+  derived from the Connect-protocol OpenAPI specs and the OpenTDF docs.
+transport:
+  protocol: Connect (gRPC + HTTP/JSON)
+  note: >-
+    Every operation is an HTTP POST to /<package>.<Service>/<Method>. Required headers
+    Connect-Protocol-Version and optional Connect-Timeout-Ms appear on all operations.
+authentication:
+  style: bearer-oidc
+  detail: OIDC/OAuth2 Bearer token on every request. See authentication/virtru-authentication.yml.
+authorization:
+  style: abac
+  detail: Attribute-based access control decisions via the Authorization service (GetDecision / GetEntitlements).
+idempotency:
+  supported: false
+  detail: >-
+    No documented idempotency-key header. Mutations are modeled as explicit Create/Update/Deactivate
+    RPCs; Deactivate is used instead of hard delete for policy objects (soft state transitions).
+pagination:
+  style: token
+  detail: >-
+    List RPCs accept a pagination request (limit/offset) and return a pagination response
+    with total and next-offset, per the OpenTDF policy list conventions.
+versioning:
+  style: package-path
+  detail: Service version encoded in the RPC package (authorization.v2, entityresolution.v2).
+error_envelope:
+  shape: connect.error
+  detail: See errors/virtru-problem-types.yml — uniform code+message envelope.
+rate_limit_signaling:
+  documented: false
+cross_links:
+  errors: errors/virtru-problem-types.yml
+  lifecycle: lifecycle/virtru-lifecycle.yml
+  authentication: authentication/virtru-authentication.yml

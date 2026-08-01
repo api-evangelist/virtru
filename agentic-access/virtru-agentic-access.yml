@@ -1,0 +1,1876 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/virtru-authorization-openapi.yaml, openapi/virtru-authorization-v2-openapi.yaml,
+  openapi/virtru-entity-resolution-v2-openapi.yaml, openapi/virtru-kas-openapi.yaml, openapi/virtru-policy-actions-openapi.yaml,
+  openapi/virtru-policy-attributes-openapi.yaml, openapi/virtru-policy-kas-registry-openapi.yaml,
+  openapi/virtru-policy-key-management-openapi.yaml, openapi/virtru-policy-namespaces-openapi.yaml,
+  openapi/virtru-policy-obligations-openapi.yaml, openapi/virtru-policy-registered-resources-openapi.yaml,
+  openapi/virtru-policy-resource-mapping-openapi.yaml, openapi/virtru-policy-subject-mapping-openapi.yaml,
+  openapi/virtru-wellknown-configuration-openapi.yaml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 116
+  by_action_class:
+    acting: 116
+  by_consequence:
+    write: 116
+  human_in_the_loop_required: 0
+operations:
+- path: /authorization.AuthorizationService/GetDecisions
+  method: post
+  operationId: authorization.AuthorizationService.GetDecisions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /authorization.AuthorizationService/GetDecisionsByToken
+  method: post
+  operationId: authorization.AuthorizationService.GetDecisionsByToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /authorization.AuthorizationService/GetEntitlements
+  method: post
+  operationId: authorization.AuthorizationService.GetEntitlements
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /authorization.v2.AuthorizationService/GetDecision
+  method: post
+  operationId: authorization.v2.AuthorizationService.GetDecision
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /authorization.v2.AuthorizationService/GetDecisionMultiResource
+  method: post
+  operationId: authorization.v2.AuthorizationService.GetDecisionMultiResource
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /authorization.v2.AuthorizationService/GetDecisionBulk
+  method: post
+  operationId: authorization.v2.AuthorizationService.GetDecisionBulk
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /authorization.v2.AuthorizationService/GetEntitlements
+  method: post
+  operationId: authorization.v2.AuthorizationService.GetEntitlements
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /entityresolution.v2.EntityResolutionService/ResolveEntities
+  method: post
+  operationId: entityresolution.v2.EntityResolutionService.ResolveEntities
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /entityresolution.v2.EntityResolutionService/CreateEntityChainsFromTokens
+  method: post
+  operationId: entityresolution.v2.EntityResolutionService.CreateEntityChainsFromTokens
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /kas.AccessService/PublicKey
+  method: post
+  operationId: kas.AccessService.PublicKey
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /kas.AccessService/LegacyPublicKey
+  method: post
+  operationId: kas.AccessService.LegacyPublicKey
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /kas.AccessService/Rewrap
+  method: post
+  operationId: kas.AccessService.Rewrap
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.actions.ActionService/GetAction
+  method: post
+  operationId: policy.actions.ActionService.GetAction
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.actions.ActionService/ListActions
+  method: post
+  operationId: policy.actions.ActionService.ListActions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.actions.ActionService/CreateAction
+  method: post
+  operationId: policy.actions.ActionService.CreateAction
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.actions.ActionService/UpdateAction
+  method: post
+  operationId: policy.actions.ActionService.UpdateAction
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.actions.ActionService/DeleteAction
+  method: post
+  operationId: policy.actions.ActionService.DeleteAction
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/ListAttributes
+  method: post
+  operationId: policy.attributes.AttributesService.ListAttributes
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/ListAttributeValues
+  method: post
+  operationId: policy.attributes.AttributesService.ListAttributeValues
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/GetAttribute
+  method: post
+  operationId: policy.attributes.AttributesService.GetAttribute
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/GetAttributeValuesByFqns
+  method: post
+  operationId: policy.attributes.AttributesService.GetAttributeValuesByFqns
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/GetKeyMappingsByFqns
+  method: post
+  operationId: policy.attributes.AttributesService.GetKeyMappingsByFqns
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/GetEntitleableAttributesByFqns
+  method: post
+  operationId: policy.attributes.AttributesService.GetEntitleableAttributesByFqns
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/CreateAttribute
+  method: post
+  operationId: policy.attributes.AttributesService.CreateAttribute
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/UpdateAttribute
+  method: post
+  operationId: policy.attributes.AttributesService.UpdateAttribute
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/DeactivateAttribute
+  method: post
+  operationId: policy.attributes.AttributesService.DeactivateAttribute
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/GetAttributeValue
+  method: post
+  operationId: policy.attributes.AttributesService.GetAttributeValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/CreateAttributeValue
+  method: post
+  operationId: policy.attributes.AttributesService.CreateAttributeValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/UpdateAttributeValue
+  method: post
+  operationId: policy.attributes.AttributesService.UpdateAttributeValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/DeactivateAttributeValue
+  method: post
+  operationId: policy.attributes.AttributesService.DeactivateAttributeValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/AssignKeyAccessServerToAttribute
+  method: post
+  operationId: policy.attributes.AttributesService.AssignKeyAccessServerToAttribute
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/RemoveKeyAccessServerFromAttribute
+  method: post
+  operationId: policy.attributes.AttributesService.RemoveKeyAccessServerFromAttribute
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/AssignKeyAccessServerToValue
+  method: post
+  operationId: policy.attributes.AttributesService.AssignKeyAccessServerToValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/RemoveKeyAccessServerFromValue
+  method: post
+  operationId: policy.attributes.AttributesService.RemoveKeyAccessServerFromValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/AssignPublicKeyToAttribute
+  method: post
+  operationId: policy.attributes.AttributesService.AssignPublicKeyToAttribute
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/RemovePublicKeyFromAttribute
+  method: post
+  operationId: policy.attributes.AttributesService.RemovePublicKeyFromAttribute
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/AssignPublicKeyToValue
+  method: post
+  operationId: policy.attributes.AttributesService.AssignPublicKeyToValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.attributes.AttributesService/RemovePublicKeyFromValue
+  method: post
+  operationId: policy.attributes.AttributesService.RemovePublicKeyFromValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/ListKeyAccessServers
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.ListKeyAccessServers
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/GetKeyAccessServer
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.GetKeyAccessServer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/CreateKeyAccessServer
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.CreateKeyAccessServer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/UpdateKeyAccessServer
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.UpdateKeyAccessServer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/DeleteKeyAccessServer
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.DeleteKeyAccessServer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/ListKeyAccessServerGrants
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.ListKeyAccessServerGrants
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/CreateKey
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.CreateKey
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/GetKey
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.GetKey
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/ListKeys
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.ListKeys
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/UpdateKey
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.UpdateKey
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/RotateKey
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.RotateKey
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/SetBaseKey
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.SetBaseKey
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/GetBaseKey
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.GetBaseKey
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.kasregistry.KeyAccessServerRegistryService/ListKeyMappings
+  method: post
+  operationId: policy.kasregistry.KeyAccessServerRegistryService.ListKeyMappings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.keymanagement.KeyManagementService/CreateProviderConfig
+  method: post
+  operationId: policy.keymanagement.KeyManagementService.CreateProviderConfig
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.keymanagement.KeyManagementService/GetProviderConfig
+  method: post
+  operationId: policy.keymanagement.KeyManagementService.GetProviderConfig
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.keymanagement.KeyManagementService/ListProviderConfigs
+  method: post
+  operationId: policy.keymanagement.KeyManagementService.ListProviderConfigs
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.keymanagement.KeyManagementService/UpdateProviderConfig
+  method: post
+  operationId: policy.keymanagement.KeyManagementService.UpdateProviderConfig
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.keymanagement.KeyManagementService/DeleteProviderConfig
+  method: post
+  operationId: policy.keymanagement.KeyManagementService.DeleteProviderConfig
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.namespaces.NamespaceService/GetNamespace
+  method: post
+  operationId: policy.namespaces.NamespaceService.GetNamespace
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.namespaces.NamespaceService/ListNamespaces
+  method: post
+  operationId: policy.namespaces.NamespaceService.ListNamespaces
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.namespaces.NamespaceService/CreateNamespace
+  method: post
+  operationId: policy.namespaces.NamespaceService.CreateNamespace
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.namespaces.NamespaceService/UpdateNamespace
+  method: post
+  operationId: policy.namespaces.NamespaceService.UpdateNamespace
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.namespaces.NamespaceService/DeactivateNamespace
+  method: post
+  operationId: policy.namespaces.NamespaceService.DeactivateNamespace
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.namespaces.NamespaceService/AssignKeyAccessServerToNamespace
+  method: post
+  operationId: policy.namespaces.NamespaceService.AssignKeyAccessServerToNamespace
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.namespaces.NamespaceService/RemoveKeyAccessServerFromNamespace
+  method: post
+  operationId: policy.namespaces.NamespaceService.RemoveKeyAccessServerFromNamespace
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.namespaces.NamespaceService/AssignPublicKeyToNamespace
+  method: post
+  operationId: policy.namespaces.NamespaceService.AssignPublicKeyToNamespace
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.namespaces.NamespaceService/RemovePublicKeyFromNamespace
+  method: post
+  operationId: policy.namespaces.NamespaceService.RemovePublicKeyFromNamespace
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/ListObligations
+  method: post
+  operationId: policy.obligations.Service.ListObligations
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/GetObligation
+  method: post
+  operationId: policy.obligations.Service.GetObligation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/GetObligationsByFQNs
+  method: post
+  operationId: policy.obligations.Service.GetObligationsByFQNs
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/CreateObligation
+  method: post
+  operationId: policy.obligations.Service.CreateObligation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/UpdateObligation
+  method: post
+  operationId: policy.obligations.Service.UpdateObligation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/DeleteObligation
+  method: post
+  operationId: policy.obligations.Service.DeleteObligation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/GetObligationValue
+  method: post
+  operationId: policy.obligations.Service.GetObligationValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/GetObligationValuesByFQNs
+  method: post
+  operationId: policy.obligations.Service.GetObligationValuesByFQNs
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/CreateObligationValue
+  method: post
+  operationId: policy.obligations.Service.CreateObligationValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/UpdateObligationValue
+  method: post
+  operationId: policy.obligations.Service.UpdateObligationValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/DeleteObligationValue
+  method: post
+  operationId: policy.obligations.Service.DeleteObligationValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/GetObligationTrigger
+  method: post
+  operationId: policy.obligations.Service.GetObligationTrigger
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/AddObligationTrigger
+  method: post
+  operationId: policy.obligations.Service.AddObligationTrigger
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/RemoveObligationTrigger
+  method: post
+  operationId: policy.obligations.Service.RemoveObligationTrigger
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.obligations.Service/ListObligationTriggers
+  method: post
+  operationId: policy.obligations.Service.ListObligationTriggers
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.registeredresources.RegisteredResourcesService/CreateRegisteredResource
+  method: post
+  operationId: policy.registeredresources.RegisteredResourcesService.CreateRegisteredResource
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.registeredresources.RegisteredResourcesService/GetRegisteredResource
+  method: post
+  operationId: policy.registeredresources.RegisteredResourcesService.GetRegisteredResource
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.registeredresources.RegisteredResourcesService/ListRegisteredResources
+  method: post
+  operationId: policy.registeredresources.RegisteredResourcesService.ListRegisteredResources
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.registeredresources.RegisteredResourcesService/UpdateRegisteredResource
+  method: post
+  operationId: policy.registeredresources.RegisteredResourcesService.UpdateRegisteredResource
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.registeredresources.RegisteredResourcesService/DeleteRegisteredResource
+  method: post
+  operationId: policy.registeredresources.RegisteredResourcesService.DeleteRegisteredResource
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.registeredresources.RegisteredResourcesService/CreateRegisteredResourceValue
+  method: post
+  operationId: policy.registeredresources.RegisteredResourcesService.CreateRegisteredResourceValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.registeredresources.RegisteredResourcesService/GetRegisteredResourceValue
+  method: post
+  operationId: policy.registeredresources.RegisteredResourcesService.GetRegisteredResourceValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.registeredresources.RegisteredResourcesService/GetRegisteredResourceValuesByFQNs
+  method: post
+  operationId: policy.registeredresources.RegisteredResourcesService.GetRegisteredResourceValuesByFQNs
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.registeredresources.RegisteredResourcesService/ListRegisteredResourceValues
+  method: post
+  operationId: policy.registeredresources.RegisteredResourcesService.ListRegisteredResourceValues
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.registeredresources.RegisteredResourcesService/UpdateRegisteredResourceValue
+  method: post
+  operationId: policy.registeredresources.RegisteredResourcesService.UpdateRegisteredResourceValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.registeredresources.RegisteredResourcesService/DeleteRegisteredResourceValue
+  method: post
+  operationId: policy.registeredresources.RegisteredResourcesService.DeleteRegisteredResourceValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.resourcemapping.ResourceMappingService/ListResourceMappingGroups
+  method: post
+  operationId: policy.resourcemapping.ResourceMappingService.ListResourceMappingGroups
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.resourcemapping.ResourceMappingService/GetResourceMappingGroup
+  method: post
+  operationId: policy.resourcemapping.ResourceMappingService.GetResourceMappingGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.resourcemapping.ResourceMappingService/CreateResourceMappingGroup
+  method: post
+  operationId: policy.resourcemapping.ResourceMappingService.CreateResourceMappingGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.resourcemapping.ResourceMappingService/UpdateResourceMappingGroup
+  method: post
+  operationId: policy.resourcemapping.ResourceMappingService.UpdateResourceMappingGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.resourcemapping.ResourceMappingService/DeleteResourceMappingGroup
+  method: post
+  operationId: policy.resourcemapping.ResourceMappingService.DeleteResourceMappingGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.resourcemapping.ResourceMappingService/ListResourceMappings
+  method: post
+  operationId: policy.resourcemapping.ResourceMappingService.ListResourceMappings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.resourcemapping.ResourceMappingService/ListResourceMappingsByGroupFqns
+  method: post
+  operationId: policy.resourcemapping.ResourceMappingService.ListResourceMappingsByGroupFqns
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.resourcemapping.ResourceMappingService/GetResourceMapping
+  method: post
+  operationId: policy.resourcemapping.ResourceMappingService.GetResourceMapping
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.resourcemapping.ResourceMappingService/CreateResourceMapping
+  method: post
+  operationId: policy.resourcemapping.ResourceMappingService.CreateResourceMapping
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.resourcemapping.ResourceMappingService/UpdateResourceMapping
+  method: post
+  operationId: policy.resourcemapping.ResourceMappingService.UpdateResourceMapping
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.resourcemapping.ResourceMappingService/DeleteResourceMapping
+  method: post
+  operationId: policy.resourcemapping.ResourceMappingService.DeleteResourceMapping
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.subjectmapping.SubjectMappingService/MatchSubjectMappings
+  method: post
+  operationId: policy.subjectmapping.SubjectMappingService.MatchSubjectMappings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.subjectmapping.SubjectMappingService/ListSubjectMappings
+  method: post
+  operationId: policy.subjectmapping.SubjectMappingService.ListSubjectMappings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.subjectmapping.SubjectMappingService/GetSubjectMapping
+  method: post
+  operationId: policy.subjectmapping.SubjectMappingService.GetSubjectMapping
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.subjectmapping.SubjectMappingService/CreateSubjectMapping
+  method: post
+  operationId: policy.subjectmapping.SubjectMappingService.CreateSubjectMapping
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.subjectmapping.SubjectMappingService/UpdateSubjectMapping
+  method: post
+  operationId: policy.subjectmapping.SubjectMappingService.UpdateSubjectMapping
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.subjectmapping.SubjectMappingService/DeleteSubjectMapping
+  method: post
+  operationId: policy.subjectmapping.SubjectMappingService.DeleteSubjectMapping
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.subjectmapping.SubjectMappingService/ListSubjectConditionSets
+  method: post
+  operationId: policy.subjectmapping.SubjectMappingService.ListSubjectConditionSets
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.subjectmapping.SubjectMappingService/GetSubjectConditionSet
+  method: post
+  operationId: policy.subjectmapping.SubjectMappingService.GetSubjectConditionSet
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.subjectmapping.SubjectMappingService/CreateSubjectConditionSet
+  method: post
+  operationId: policy.subjectmapping.SubjectMappingService.CreateSubjectConditionSet
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.subjectmapping.SubjectMappingService/UpdateSubjectConditionSet
+  method: post
+  operationId: policy.subjectmapping.SubjectMappingService.UpdateSubjectConditionSet
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.subjectmapping.SubjectMappingService/DeleteSubjectConditionSet
+  method: post
+  operationId: policy.subjectmapping.SubjectMappingService.DeleteSubjectConditionSet
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /policy.subjectmapping.SubjectMappingService/DeleteAllUnmappedSubjectConditionSets
+  method: post
+  operationId: policy.subjectmapping.SubjectMappingService.DeleteAllUnmappedSubjectConditionSets
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /wellknownconfiguration.WellKnownService/GetWellKnownConfiguration
+  method: post
+  operationId: wellknownconfiguration.WellKnownService.GetWellKnownConfiguration
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required

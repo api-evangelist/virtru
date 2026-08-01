@@ -1,0 +1,66 @@
+generated: '2026-07-21'
+method: derived
+source: grpc/virtru-policy-objects.proto
+description: >-
+  Entity-relationship model for the Virtru Data Security Platform (OpenTDF) policy domain,
+  derived from the policy objects proto and the per-service specs. The policy graph binds
+  data attributes to Key Access Servers and to subject entitlements; the KAS enforces access.
+entities:
+  - name: Namespace
+    summary: Top-level container that scopes attribute FQNs (e.g. https://example.com).
+    relationships:
+      - has_many: Attribute
+        via: namespace
+      - has_many: KeyAccessServer
+        via: grant
+  - name: Attribute
+    summary: A named policy attribute (definition) with a rule (allOf/anyOf/hierarchy).
+    relationships:
+      - belongs_to: Namespace
+        via: namespace
+      - has_many: Value
+        via: attribute
+      - has_many: KeyAccessServer
+        via: grant
+  - name: Value
+    summary: A concrete value of an attribute (the unit of entitlement).
+    relationships:
+      - belongs_to: Attribute
+        via: attribute
+      - has_many: KeyAccessServer
+        via: grant
+      - has_many: SubjectMapping
+        via: attribute_value
+  - name: SubjectMapping
+    summary: Maps a subject condition set to an attribute value + permitted actions.
+    relationships:
+      - belongs_to: Value
+        via: attribute_value
+      - belongs_to: SubjectConditionSet
+        via: subject_condition_set
+      - has_many: Action
+        via: actions
+  - name: SubjectConditionSet
+    summary: Reusable set of subject external-selector conditions.
+  - name: ResourceMapping
+    summary: Maps resource terms/tags to an attribute value for classification.
+    relationships:
+      - belongs_to: Value
+        via: attribute_value
+      - belongs_to: ResourceMappingGroup
+        via: group
+  - name: KeyAccessServer
+    summary: A KAS that holds/wraps keys and enforces rewrap decisions.
+    relationships:
+      - has_many: Key
+        via: kas
+  - name: Key
+    summary: Cryptographic key (KasPublicKey / asymmetric / symmetric) held by a KAS.
+    relationships:
+      - belongs_to: KeyAccessServer
+        via: kas
+  - name: RegisteredResource
+    summary: A registered resource with values, bound to policy for non-TDF assets.
+  - name: Obligation
+    summary: An obligation (with values + triggers) attached to policy enforcement.
+render: null

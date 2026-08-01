@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+host: https://www.virtru.com
+description: >-
+  Probe of the /.well-known/ discovery surface on the Virtru marketing/developer host.
+  No discovery documents are published there (all 404) — the OpenTDF platform exposes its
+  OIDC/config discovery through the Well-Known Configuration RPC service on each deployment
+  rather than a static file on virtru.com. Recorded as an honest negative result.
+documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/opentdf-configuration
+    status: 404
+note: >-
+  Runtime OIDC/platform configuration is served by the WellKnownConfiguration service
+  (see openapi/virtru-wellknown-configuration-openapi.yaml) on a deployed platform instance,
+  not a fixed public URL.

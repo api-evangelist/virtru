@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: https://trust.virtru.com/
+docs: https://opentdf.io/architecture
+description: >-
+  Standards and compliance posture for the Virtru Data Security Platform (OpenTDF).
+  Cross-cutting standard conformance is derived from the published OpenAPI/proto surface
+  and the OpenTDF architecture docs; compliance certifications are sourced from the Virtru
+  Trust Center.
+standards:
+  - id: oidc
+    conforms: true
+    evidence: All services authenticate via OpenID Connect (Well-Known configuration service).
+  - id: oauth2
+    conforms: true
+    evidence: Bearer tokens via OAuth 2.0 client-credentials / authorization-code flows.
+  - id: tdf
+    conforms: true
+    evidence: Implements the Trusted Data Format open spec (github.com/virtru/tdf-spec).
+  - id: nist-sp-800-162-abac
+    conforms: true
+    evidence: access-pdp implements a NIST SP 800-162 ABAC Access PDP; authorization service issues ABAC decisions.
+  - id: connect-rpc
+    conforms: true
+    evidence: Services exposed over the Connect protocol (gRPC + HTTP/JSON) generated via Buf.
+  - id: fips-140
+    conforms: true
+    evidence: FIPS 140 validated cryptography listed on the Virtru Trust Center.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use the Connect error envelope (connect.error), not application/problem+json.
+compliance:
+  program_url: https://trust.virtru.com/
+  certifications:
+    - SOC 2
+    - PCI DSS
+    - HIPAA
+    - FedRAMP
+    - FIPS 140

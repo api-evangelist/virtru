@@ -1,0 +1,59 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.virtru.com/developers/get-started
+description: >-
+  First-party client libraries for the Virtru Data Security Platform, published
+  under the OpenTDF project that Virtru maintains. All SDKs connect to the
+  Data Security Platform via OIDC, create/read TDF (Trusted Data Format) objects,
+  and enforce attribute-based access control.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@opentdf/sdk"
+    url: https://www.npmjs.com/package/@opentdf/sdk
+    install: npm install @opentdf/sdk
+    version: 0.20.0
+    official: true
+    notes: OpenTDF for the Web; TDF create/read + KAS rewrap.
+  - language: javascript
+    registry: npm
+    name: "@opentdf/client"
+    url: https://www.npmjs.com/package/@opentdf/client
+    install: npm install @opentdf/client
+    official: true
+    notes: Legacy OpenTDF JavaScript client.
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/opentdf/platform/sdk
+    url: https://pkg.go.dev/github.com/opentdf/platform/sdk
+    install: go get github.com/opentdf/platform/sdk
+    version: v0.27.0
+    official: true
+  - language: java
+    registry: maven-central
+    name: io.opentdf.platform:sdk
+    url: https://central.sonatype.com/artifact/io.opentdf.platform/sdk-pom
+    install: "<dependency><groupId>io.opentdf.platform</groupId><artifactId>sdk</artifactId></dependency>"
+    official: true
+  - language: java
+    registry: maven-central
+    name: io.opentdf.nifi:nifi
+    url: https://central.sonatype.com/artifact/io.opentdf.nifi/nifi-pom
+    install: "Apache NiFi processors for TDF encryption in data workflows"
+    official: true
+    notes: NiFi processors — encrypt data in flow without code changes.
+  - language: go
+    registry: github
+    name: otdfctl
+    url: https://github.com/opentdf/otdfctl
+    install: go install github.com/opentdf/otdfctl@latest
+    version: otdfctl/v0.35.0
+    official: true
+    notes: Official OpenTDF command-line tool (see cli/virtru-cli.yml).
+  - language: python
+    registry: github
+    name: audit-export-client
+    url: https://github.com/virtru/audit-export-client
+    install: "git clone https://github.com/virtru/audit-export-client"
+    official: true
+    notes: Python-based Virtru Audit Export Client.
