@@ -1,0 +1,317 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "authorization authorization.AuthorizationService policy.subjectmapping.SubjectMappingService API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "policy.subjectmapping.SubjectMappingService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MatchSubjectMappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.subjectmapping.SubjectMappingService/MatchSubjectMappings",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find matching Subject Mappings for a given Subject"
+        },
+        {
+          "info": {
+            "name": "ListSubjectMappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.subjectmapping.SubjectMappingService/ListSubjectMappings",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ListSubjectMappings"
+        },
+        {
+          "info": {
+            "name": "GetSubjectMapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.subjectmapping.SubjectMappingService/GetSubjectMapping",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetSubjectMapping"
+        },
+        {
+          "info": {
+            "name": "CreateSubjectMapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.subjectmapping.SubjectMappingService/CreateSubjectMapping",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateSubjectMapping"
+        },
+        {
+          "info": {
+            "name": "UpdateSubjectMapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.subjectmapping.SubjectMappingService/UpdateSubjectMapping",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "UpdateSubjectMapping"
+        },
+        {
+          "info": {
+            "name": "DeleteSubjectMapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.subjectmapping.SubjectMappingService/DeleteSubjectMapping",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DeleteSubjectMapping"
+        },
+        {
+          "info": {
+            "name": "ListSubjectConditionSets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.subjectmapping.SubjectMappingService/ListSubjectConditionSets",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ListSubjectConditionSets"
+        },
+        {
+          "info": {
+            "name": "GetSubjectConditionSet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.subjectmapping.SubjectMappingService/GetSubjectConditionSet",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetSubjectConditionSet"
+        },
+        {
+          "info": {
+            "name": "CreateSubjectConditionSet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.subjectmapping.SubjectMappingService/CreateSubjectConditionSet",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateSubjectConditionSet"
+        },
+        {
+          "info": {
+            "name": "UpdateSubjectConditionSet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.subjectmapping.SubjectMappingService/UpdateSubjectConditionSet",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "UpdateSubjectConditionSet"
+        },
+        {
+          "info": {
+            "name": "DeleteSubjectConditionSet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.subjectmapping.SubjectMappingService/DeleteSubjectConditionSet",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DeleteSubjectConditionSet"
+        },
+        {
+          "info": {
+            "name": "DeleteAllUnmappedSubjectConditionSets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.subjectmapping.SubjectMappingService/DeleteAllUnmappedSubjectConditionSets",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DeleteAllUnmappedSubjectConditionSets"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

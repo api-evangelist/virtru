@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "authorization authorization.AuthorizationService authorization.v2.AuthorizationService API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "authorization.v2.AuthorizationService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetDecision",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/authorization.v2.AuthorizationService/GetDecision",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetDecision"
+        },
+        {
+          "info": {
+            "name": "GetDecisionMultiResource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/authorization.v2.AuthorizationService/GetDecisionMultiResource",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetDecisionMultiResource"
+        },
+        {
+          "info": {
+            "name": "GetDecisionBulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/authorization.v2.AuthorizationService/GetDecisionBulk",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetDecisionBulk"
+        },
+        {
+          "info": {
+            "name": "GetEntitlements",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/authorization.v2.AuthorizationService/GetEntitlements",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetEntitlements"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

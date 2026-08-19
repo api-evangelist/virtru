@@ -1,0 +1,242 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "authorization authorization.AuthorizationService policy.namespaces.NamespaceService API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "policy.namespaces.NamespaceService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetNamespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.namespaces.NamespaceService/GetNamespace",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetNamespace"
+        },
+        {
+          "info": {
+            "name": "ListNamespaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.namespaces.NamespaceService/ListNamespaces",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ListNamespaces"
+        },
+        {
+          "info": {
+            "name": "CreateNamespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.namespaces.NamespaceService/CreateNamespace",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateNamespace"
+        },
+        {
+          "info": {
+            "name": "UpdateNamespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.namespaces.NamespaceService/UpdateNamespace",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "UpdateNamespace"
+        },
+        {
+          "info": {
+            "name": "DeactivateNamespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.namespaces.NamespaceService/DeactivateNamespace",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DeactivateNamespace"
+        },
+        {
+          "info": {
+            "name": "AssignKeyAccessServerToNamespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.namespaces.NamespaceService/AssignKeyAccessServerToNamespace",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deprecated: utilize AssignPublicKeyToNamespace"
+        },
+        {
+          "info": {
+            "name": "RemoveKeyAccessServerFromNamespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.namespaces.NamespaceService/RemoveKeyAccessServerFromNamespace",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deprecated: utilize RemovePublicKeyFromNamespace"
+        },
+        {
+          "info": {
+            "name": "AssignPublicKeyToNamespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.namespaces.NamespaceService/AssignPublicKeyToNamespace",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "--------------------------------------*\n Namespace <> Key RPCs\n---------------------------------------"
+        },
+        {
+          "info": {
+            "name": "RemovePublicKeyFromNamespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.namespaces.NamespaceService/RemovePublicKeyFromNamespace",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "RemovePublicKeyFromNamespace"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

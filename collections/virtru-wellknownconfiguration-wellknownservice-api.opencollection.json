@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "authorization authorization.AuthorizationService wellknownconfiguration.WellKnownService API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "wellknownconfiguration.WellKnownService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetWellKnownConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/wellknownconfiguration.WellKnownService/GetWellKnownConfiguration",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetWellKnownConfiguration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "authorization authorization.AuthorizationService API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "authorization.AuthorizationService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetDecisions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/authorization.AuthorizationService/GetDecisions",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetDecisions"
+        },
+        {
+          "info": {
+            "name": "GetDecisionsByToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/authorization.AuthorizationService/GetDecisionsByToken",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetDecisionsByToken"
+        },
+        {
+          "info": {
+            "name": "GetEntitlements",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/authorization.AuthorizationService/GetEntitlements",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetEntitlements"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

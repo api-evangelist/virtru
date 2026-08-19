@@ -1,0 +1,542 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "authorization authorization.AuthorizationService policy.attributes.AttributesService API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "policy.attributes.AttributesService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/ListAttributes",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "--------------------------------------*\n Attribute RPCs\n---------------------------------------"
+        },
+        {
+          "info": {
+            "name": "ListAttributeValues",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/ListAttributeValues",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deprecated\n Use GetAttribute"
+        },
+        {
+          "info": {
+            "name": "GetAttribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/GetAttribute",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetAttribute"
+        },
+        {
+          "info": {
+            "name": "GetAttributeValuesByFqns",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/GetAttributeValuesByFqns",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deprecated: Use GetKeyMappingsByFqns for client-side key splits and\n GetEntitleableAttributesByFqns for server-side entitlement resolution."
+        },
+        {
+          "info": {
+            "name": "GetKeyMappingsByFqns",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/GetKeyMappingsByFqns",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns only key-mapping information (rule and effective KAS keys) for the\n requested attribute value FQNs, for client-side key split construction."
+        },
+        {
+          "info": {
+            "name": "GetEntitleableAttributesByFqns",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/GetEntitleableAttributesByFqns",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns only entitlement-relevant information (rule, value identity, ordered\n definition values, and subject mappings) for the requested attribute value\n FQNs, for server-side decisioning / entitlement resolution."
+        },
+        {
+          "info": {
+            "name": "CreateAttribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/CreateAttribute",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateAttribute"
+        },
+        {
+          "info": {
+            "name": "UpdateAttribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/UpdateAttribute",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "UpdateAttribute"
+        },
+        {
+          "info": {
+            "name": "DeactivateAttribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/DeactivateAttribute",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DeactivateAttribute"
+        },
+        {
+          "info": {
+            "name": "GetAttributeValue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/GetAttributeValue",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "--------------------------------------*\n Value RPCs\n---------------------------------------"
+        },
+        {
+          "info": {
+            "name": "CreateAttributeValue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/CreateAttributeValue",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateAttributeValue"
+        },
+        {
+          "info": {
+            "name": "UpdateAttributeValue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/UpdateAttributeValue",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "UpdateAttributeValue"
+        },
+        {
+          "info": {
+            "name": "DeactivateAttributeValue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/DeactivateAttributeValue",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DeactivateAttributeValue"
+        },
+        {
+          "info": {
+            "name": "AssignKeyAccessServerToAttribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/AssignKeyAccessServerToAttribute",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deprecated: utilize AssignPublicKeyToAttribute"
+        },
+        {
+          "info": {
+            "name": "RemoveKeyAccessServerFromAttribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/RemoveKeyAccessServerFromAttribute",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deprecated: utilize RemovePublicKeyFromAttribute"
+        },
+        {
+          "info": {
+            "name": "AssignKeyAccessServerToValue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/AssignKeyAccessServerToValue",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deprecated: utilize AssignPublicKeyToValue"
+        },
+        {
+          "info": {
+            "name": "RemoveKeyAccessServerFromValue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/RemoveKeyAccessServerFromValue",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deprecated: utilize RemovePublicKeyFromValue"
+        },
+        {
+          "info": {
+            "name": "AssignPublicKeyToAttribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/AssignPublicKeyToAttribute",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "AssignPublicKeyToAttribute"
+        },
+        {
+          "info": {
+            "name": "RemovePublicKeyFromAttribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/RemovePublicKeyFromAttribute",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "RemovePublicKeyFromAttribute"
+        },
+        {
+          "info": {
+            "name": "AssignPublicKeyToValue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/AssignPublicKeyToValue",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "AssignPublicKeyToValue"
+        },
+        {
+          "info": {
+            "name": "RemovePublicKeyFromValue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.attributes.AttributesService/RemovePublicKeyFromValue",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "RemovePublicKeyFromValue"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "authorization authorization.AuthorizationService entityresolution.v2.EntityResolutionService API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "entityresolution.v2.EntityResolutionService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ResolveEntities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/entityresolution.v2.EntityResolutionService/ResolveEntities",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ResolveEntities"
+        },
+        {
+          "info": {
+            "name": "CreateEntityChainsFromTokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/entityresolution.v2.EntityResolutionService/CreateEntityChainsFromTokens",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateEntityChainsFromTokens"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

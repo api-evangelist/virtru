@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "authorization authorization.AuthorizationService kas.AccessService API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "kas.AccessService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PublicKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/kas.AccessService/PublicKey",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "PublicKey"
+        },
+        {
+          "info": {
+            "name": "LegacyPublicKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/kas.AccessService/LegacyPublicKey",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Endpoint intended for gRPC Gateway's REST endpoint to provide v1 compatibility with older TDF clients\n\n This endpoint is not recommended for use in new applications, prefer the v2 endpoint ('PublicKey') instead.\n\n buf:lint:ignore RPC_RESPONSE_STANDARD_NAME"
+        },
+        {
+          "info": {
+            "name": "Rewrap",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/kas.AccessService/Rewrap",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rewrap"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

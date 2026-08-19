@@ -2,37 +2,41 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/*.yaml
-description: >-
-  No official hosted/remote MCP server was found for Virtru / OpenTDF as of this pass.
-  This is a DERIVED candidate tool list mapping marquee Data Security Platform operations
-  to MCP tools, as a starting point for exposing the platform to agents. Not an official
-  Virtru product.
+description: No official hosted/remote MCP server was found for Virtru / OpenTDF as of this pass. This
+  is a DERIVED candidate tool list mapping marquee Data Security Platform operations to MCP tools, as
+  a starting point for exposing the platform to agents. Not an official Virtru product.
 server:
   name: virtru-opentdf
   transport: stdio
   url: null
 tools:
-  - name: get_access_decision
-    description: Ask the Authorization service whether an entity may act on a resource (ABAC).
-    source_operation: openapi/virtru-authorization-v2-openapi.yaml#authorization.v2.AuthorizationService.GetDecision
-  - name: get_entitlements
-    description: List the entitlements (attribute values) an entity is granted.
-    source_operation: openapi/virtru-authorization-v2-openapi.yaml#authorization.v2.AuthorizationService.GetEntitlements
-  - name: get_kas_public_key
-    description: Fetch a Key Access Server public key for TDF wrapping.
-    source_operation: openapi/virtru-kas-openapi.yaml#kas.AccessService.PublicKey
-  - name: rewrap_key
-    description: Request KAS key rewrap to decrypt a TDF subject to policy.
-    source_operation: openapi/virtru-kas-openapi.yaml#kas.AccessService.Rewrap
-  - name: list_attributes
-    description: List attribute definitions in the policy store.
-    source_operation: openapi/virtru-policy-attributes-openapi.yaml#policy.attributes.AttributesService.ListAttributes
-  - name: create_attribute
-    description: Create an attribute definition.
-    source_operation: openapi/virtru-policy-attributes-openapi.yaml#policy.attributes.AttributesService.CreateAttribute
-  - name: list_namespaces
-    description: List attribute namespaces.
-    source_operation: openapi/virtru-policy-namespaces-openapi.yaml#policy.namespaces.NamespaceService.ListNamespaces
-  - name: list_subject_mappings
-    description: List subject mappings (who maps to which attribute values).
-    source_operation: openapi/virtru-policy-subject-mapping-openapi.yaml#policy.subjectmapping.SubjectMappingService.ListSubjectMappings
+- name: get_access_decision
+  description: Ask the Authorization service whether an entity may act on a resource (ABAC).
+  source_operation: openapi/virtru-authorization-v2-openapi.yaml#authorization.v2.AuthorizationService.GetDecision
+- name: get_entitlements
+  description: List the entitlements (attribute values) an entity is granted.
+  source_operation: openapi/virtru-authorization-v2-openapi.yaml#authorization.v2.AuthorizationService.GetEntitlements
+- name: get_kas_public_key
+  description: Fetch a Key Access Server public key for TDF wrapping.
+  source_operation: openapi/virtru-kas-openapi.yaml#kas.AccessService.PublicKey
+- name: rewrap_key
+  description: Request KAS key rewrap to decrypt a TDF subject to policy.
+  source_operation: openapi/virtru-kas-openapi.yaml#kas.AccessService.Rewrap
+- name: list_attributes
+  description: List attribute definitions in the policy store.
+  source_operation: openapi/virtru-policy-attributes-openapi.yaml#policy.attributes.AttributesService.ListAttributes
+- name: create_attribute
+  description: Create an attribute definition.
+  source_operation: openapi/virtru-policy-attributes-openapi.yaml#policy.attributes.AttributesService.CreateAttribute
+- name: list_namespaces
+  description: List attribute namespaces.
+  source_operation: openapi/virtru-policy-namespaces-openapi.yaml#policy.namespaces.NamespaceService.ListNamespaces
+- name: list_subject_mappings
+  description: List subject mappings (who maps to which attribute values).
+  source_operation: openapi/virtru-policy-subject-mapping-openapi.yaml#policy.subjectmapping.SubjectMappingService.ListSubjectMappings
+deployment:
+  mode: none
+  verified: derived
+  tools: 8
+  checked: '2026-08-12'
+  source: catalog MCP census

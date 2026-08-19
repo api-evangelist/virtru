@@ -1,0 +1,292 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "authorization authorization.AuthorizationService policy.registeredresources.RegisteredResourcesService API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "policy.registeredresources.RegisteredResourcesService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateRegisteredResource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.registeredresources.RegisteredResourcesService/CreateRegisteredResource",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateRegisteredResource"
+        },
+        {
+          "info": {
+            "name": "GetRegisteredResource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.registeredresources.RegisteredResourcesService/GetRegisteredResource",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetRegisteredResource"
+        },
+        {
+          "info": {
+            "name": "ListRegisteredResources",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.registeredresources.RegisteredResourcesService/ListRegisteredResources",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ListRegisteredResources"
+        },
+        {
+          "info": {
+            "name": "UpdateRegisteredResource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.registeredresources.RegisteredResourcesService/UpdateRegisteredResource",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "UpdateRegisteredResource"
+        },
+        {
+          "info": {
+            "name": "DeleteRegisteredResource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.registeredresources.RegisteredResourcesService/DeleteRegisteredResource",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DeleteRegisteredResource"
+        },
+        {
+          "info": {
+            "name": "CreateRegisteredResourceValue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.registeredresources.RegisteredResourcesService/CreateRegisteredResourceValue",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateRegisteredResourceValue"
+        },
+        {
+          "info": {
+            "name": "GetRegisteredResourceValue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.registeredresources.RegisteredResourcesService/GetRegisteredResourceValue",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetRegisteredResourceValue"
+        },
+        {
+          "info": {
+            "name": "GetRegisteredResourceValuesByFQNs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.registeredresources.RegisteredResourcesService/GetRegisteredResourceValuesByFQNs",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetRegisteredResourceValuesByFQNs"
+        },
+        {
+          "info": {
+            "name": "ListRegisteredResourceValues",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.registeredresources.RegisteredResourcesService/ListRegisteredResourceValues",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ListRegisteredResourceValues"
+        },
+        {
+          "info": {
+            "name": "UpdateRegisteredResourceValue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.registeredresources.RegisteredResourcesService/UpdateRegisteredResourceValue",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "UpdateRegisteredResourceValue"
+        },
+        {
+          "info": {
+            "name": "DeleteRegisteredResourceValue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policy.registeredresources.RegisteredResourcesService/DeleteRegisteredResourceValue",
+            "headers": [
+              {
+                "name": "Connect-Protocol-Version",
+                "value": ""
+              },
+              {
+                "name": "Connect-Timeout-Ms",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DeleteRegisteredResourceValue"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
