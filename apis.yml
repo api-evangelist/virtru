@@ -27,7 +27,7 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 image: https://www.virtru.com/hubfs/assets/images/logos/virtru/logomark/blue/virtru_LOGOMARKMASTER_BLUE_FINAL.png
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-21'
 tags:
