@@ -47,7 +47,8 @@ apis:
     The authorization.AuthorizationService API from Virtru — 3 operation(s) for authorization.authorizationservice.
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - authorization.AuthorizationService
   properties:
   - type: OpenAPI
@@ -58,7 +59,8 @@ apis:
     The authorization.v2.AuthorizationService API from Virtru — 4 operation(s) for authorization.v2.authorizationservice.
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - authorization.v2.AuthorizationService
   properties:
   - type: OpenAPI
@@ -69,7 +71,8 @@ apis:
     The entityresolution.v2.EntityResolutionService API from Virtru — 2 operation(s) for entityresolution.v2.entityresolutionservice.
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - entityresolution.v2.EntityResolutionService
   properties:
   - type: OpenAPI
@@ -79,7 +82,8 @@ apis:
   description: Get app info from the root path
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - kas.AccessService
   properties:
   - type: OpenAPI
@@ -90,7 +94,8 @@ apis:
     The policy.actions.ActionService API from Virtru — 5 operation(s) for policy.actions.actionservice.
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - policy.actions.ActionService
   properties:
   - type: OpenAPI
@@ -105,7 +110,8 @@ apis:
     /
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - policy.attributes.AttributesService
   properties:
   - type: OpenAPI
@@ -116,7 +122,8 @@ apis:
     The policy.kasregistry.KeyAccessServerRegistryService API from Virtru — 14 operation(s) for policy.kasregistry.keyaccessserverregistryservice.
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - policy.kasregistry.KeyAccessServerRegistryService
   properties:
   - type: OpenAPI
@@ -127,7 +134,8 @@ apis:
     The policy.keymanagement.KeyManagementService API from Virtru — 5 operation(s) for policy.keymanagement.keymanagementservice.
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - policy.keymanagement.KeyManagementService
   properties:
   - type: OpenAPI
@@ -138,7 +146,8 @@ apis:
     The policy.namespaces.NamespaceService API from Virtru — 9 operation(s) for policy.namespaces.namespaceservice.
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - policy.namespaces.NamespaceService
   properties:
   - type: OpenAPI
@@ -153,7 +162,8 @@ apis:
     /
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - policy.obligations.Service
   properties:
   - type: OpenAPI
@@ -163,7 +173,8 @@ apis:
   description: Registered Resources
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - policy.registeredresources.RegisteredResourcesService
   properties:
   - type: OpenAPI
@@ -173,7 +184,8 @@ apis:
   description: Resource Mapping Groups
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - policy.resourcemapping.ResourceMappingService
   properties:
   - type: OpenAPI
@@ -184,7 +196,8 @@ apis:
     The policy.subjectmapping.SubjectMappingService API from Virtru — 12 operation(s) for policy.subjectmapping.subjectmappingservice.
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - policy.subjectmapping.SubjectMappingService
   properties:
   - type: OpenAPI
@@ -195,7 +208,8 @@ apis:
     The wellknownconfiguration.WellKnownService API from Virtru — 1 operation(s) for wellknownconfiguration.wellknownservice.
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
-  tags:
+  tags: []
+  tags_raw:
   - wellknownconfiguration.WellKnownService
   properties:
   - type: OpenAPI
