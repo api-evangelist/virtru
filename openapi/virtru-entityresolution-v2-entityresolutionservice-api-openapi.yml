@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: authorization authorization.AuthorizationService entityresolution.v2.EntityResolutionService API
+  title: Entityresolution.v2.Entity Resolution Service API
 security: []
 tags:
 - name: entityresolution.v2.EntityResolutionService
@@ -77,60 +77,6 @@ paths:
                 $ref: '#/components/schemas/entityresolution.v2.CreateEntityChainsFromTokensResponse'
 components:
   schemas:
-    authorization.v2.Resource:
-      type: object
-      oneOf:
-      - properties:
-          attributeValues:
-            title: attribute_values
-            description: 'a set of attribute value FQNs, such as those on a TDF, containing at least 1 value
-
-              if provided, resource.attribute_values must contain at least 1 valid FQN:
-
-              ```
-
-              this.fqns.size() > 0 && this.fqns.all(item, item.isUri())
-
-              ```
-
-
-              '
-            $ref: '#/components/schemas/authorization.v2.Resource.AttributeValues'
-        title: attribute_values
-        required:
-        - attributeValues
-      - properties:
-          registeredResourceValueFqn:
-            type: string
-            title: registered_resource_value_fqn
-            minLength: 1
-            format: uri
-            description: fully qualified name of the registered resource value stored in platform policy
-        title: registered_resource_value_fqn
-        required:
-        - registeredResourceValueFqn
-      properties:
-        ephemeralId:
-          type: string
-          title: ephemeral_id
-          description: ephemeral id for tracking between request and response
-      title: Resource
-      additionalProperties: false
-      description: Either a set of attribute values (such as those on a TDF) or a registered resource value
-    entityresolution.v2.ResolveEntitiesRequest:
-      type: object
-      properties:
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/entity.Entity'
-          title: entities
-          minItems: 1
-      title: ResolveEntitiesRequest
-      required:
-      - entities
-      additionalProperties: false
-      description: Resolve a set of entities to their representations.
     entityresolution.v2.EntityRepresentation:
       type: object
       properties:
@@ -151,32 +97,13 @@ components:
           description: direct entitlements applied to Entity (experimental)
       title: EntityRepresentation
       additionalProperties: false
-    google.protobuf.Struct:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/google.protobuf.Value'
-      description: "`Struct` represents a structured data value, consisting of fields\n which map to dynamically typed values. In some languages, `Struct`\n might be supported by a native representation. For example, in\n scripting languages like JS a struct is represented as an\n object. The details of that representation are described together\n with the proto support for the language.\n\n The JSON representation for `Struct` is JSON object."
-    connect-timeout-header:
+    connect-protocol-version:
       type: number
-      title: Connect-Timeout-Ms
-      description: Define the timeout, in ms
-    entityresolution.v2.CreateEntityChainsFromTokensRequest:
-      type: object
-      properties:
-        tokens:
-          type: array
-          items:
-            $ref: '#/components/schemas/entity.Token'
-          title: tokens
-        resources:
-          type: array
-          items:
-            $ref: '#/components/schemas/authorization.v2.Resource'
-          title: resources
-          description: resources to consider for direct entitlements (experimental)
-      title: CreateEntityChainsFromTokensRequest
-      additionalProperties: false
-      description: Create an entity chain for each token (JWT) in the request.
+      title: Connect-Protocol-Version
+      enum:
+      - 1
+      description: Define the version of the Connect protocol
+      const: 1
     entityresolution.v2.CreateEntityChainsFromTokensResponse:
       type: object
       properties:
@@ -187,19 +114,20 @@ components:
           title: entity_chains
       title: CreateEntityChainsFromTokensResponse
       additionalProperties: false
-    google.protobuf.Any:
+    entityresolution.v2.DirectEntitlement:
       type: object
       properties:
-        type:
+        attributeValueFqn:
           type: string
-        value:
-          type: string
-          format: binary
-        debug:
-          type: object
-          additionalProperties: true
-      additionalProperties: true
-      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+          title: attribute_value_fqn
+        actions:
+          type: array
+          items:
+            type: string
+          title: actions
+      title: DirectEntitlement
+      additionalProperties: false
+      description: Entity Entitlements that do not require subject mappings (experimental)
     entity.Entity:
       type: object
       oneOf:
@@ -243,6 +171,51 @@ components:
       title: Entity
       additionalProperties: false
       description: PE (Person Entity) or NPE (Non-Person Entity)
+    authorization.v2.Resource:
+      type: object
+      oneOf:
+      - properties:
+          attributeValues:
+            title: attribute_values
+            description: 'a set of attribute value FQNs, such as those on a TDF, containing at least 1 value
+
+              if provided, resource.attribute_values must contain at least 1 valid FQN:
+
+              ```
+
+              this.fqns.size() > 0 && this.fqns.all(item, item.isUri())
+
+              ```
+
+
+              '
+            $ref: '#/components/schemas/authorization.v2.Resource.AttributeValues'
+        title: attribute_values
+        required:
+        - attributeValues
+      - properties:
+          registeredResourceValueFqn:
+            type: string
+            title: registered_resource_value_fqn
+            minLength: 1
+            format: uri
+            description: fully qualified name of the registered resource value stored in platform policy
+        title: registered_resource_value_fqn
+        required:
+        - registeredResourceValueFqn
+      properties:
+        ephemeralId:
+          type: string
+          title: ephemeral_id
+          description: ephemeral id for tracking between request and response
+      title: Resource
+      additionalProperties: false
+      description: Either a set of attribute values (such as those on a TDF) or a registered resource value
+    google.protobuf.Struct:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/google.protobuf.Value'
+      description: "`Struct` represents a structured data value, consisting of fields\n which map to dynamically typed values. In some languages, `Struct`\n might be supported by a native representation. For example, in\n scripting languages like JS a struct is represented as an\n object. The details of that representation are described together\n with the proto support for the language.\n\n The JSON representation for `Struct` is JSON object."
     entity.Entity.Category:
       type: string
       title: Category
@@ -250,6 +223,16 @@ components:
       - CATEGORY_UNSPECIFIED
       - CATEGORY_SUBJECT
       - CATEGORY_ENVIRONMENT
+    entityresolution.v2.ResolveEntitiesResponse:
+      type: object
+      properties:
+        entityRepresentations:
+          type: array
+          items:
+            $ref: '#/components/schemas/entityresolution.v2.EntityRepresentation'
+          title: entity_representations
+      title: ResolveEntitiesResponse
+      additionalProperties: false
     connect.error:
       type: object
       properties:
@@ -283,27 +266,16 @@ components:
       title: Connect Error
       additionalProperties: true
       description: 'Error type returned by Connect: https://connectrpc.com/docs/go/errors/#http-representation'
-    entityresolution.v2.DirectEntitlement:
-      type: object
-      properties:
-        attributeValueFqn:
-          type: string
-          title: attribute_value_fqn
-        actions:
-          type: array
-          items:
-            type: string
-          title: actions
-      title: DirectEntitlement
-      additionalProperties: false
-      description: Entity Entitlements that do not require subject mappings (experimental)
-    connect-protocol-version:
-      type: number
-      title: Connect-Protocol-Version
-      enum:
-      - 1
-      description: Define the version of the Connect protocol
-      const: 1
+    google.protobuf.Value:
+      oneOf:
+      - type: 'null'
+      - type: number
+      - type: string
+      - type: boolean
+      - type: array
+      - type: object
+        additionalProperties: true
+      description: "`Value` represents a dynamically typed value which can be either\n null, a number, a string, a boolean, a recursive struct value, or a\n list of values. A producer of value is expected to set one of these\n variants. Absence of any variant indicates an error.\n\n The JSON representation for `Value` is JSON value."
     entity.Token:
       type: object
       properties:
@@ -319,16 +291,20 @@ components:
       required:
       - jwt
       additionalProperties: false
-    authorization.v2.Resource.AttributeValues:
+    entityresolution.v2.ResolveEntitiesRequest:
       type: object
       properties:
-        fqns:
+        entities:
           type: array
           items:
-            type: string
-          title: fqns
-      title: AttributeValues
+            $ref: '#/components/schemas/entity.Entity'
+          title: entities
+          minItems: 1
+      title: ResolveEntitiesRequest
+      required:
+      - entities
       additionalProperties: false
+      description: Resolve a set of entities to their representations.
     entity.EntityChain:
       type: object
       properties:
@@ -344,23 +320,47 @@ components:
       title: EntityChain
       additionalProperties: false
       description: A set of related PE and NPE
-    entityresolution.v2.ResolveEntitiesResponse:
+    connect-timeout-header:
+      type: number
+      title: Connect-Timeout-Ms
+      description: Define the timeout, in ms
+    entityresolution.v2.CreateEntityChainsFromTokensRequest:
       type: object
       properties:
-        entityRepresentations:
+        tokens:
           type: array
           items:
-            $ref: '#/components/schemas/entityresolution.v2.EntityRepresentation'
-          title: entity_representations
-      title: ResolveEntitiesResponse
+            $ref: '#/components/schemas/entity.Token'
+          title: tokens
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/authorization.v2.Resource'
+          title: resources
+          description: resources to consider for direct entitlements (experimental)
+      title: CreateEntityChainsFromTokensRequest
       additionalProperties: false
-    google.protobuf.Value:
-      oneOf:
-      - type: 'null'
-      - type: number
-      - type: string
-      - type: boolean
-      - type: array
-      - type: object
-        additionalProperties: true
-      description: "`Value` represents a dynamically typed value which can be either\n null, a number, a string, a boolean, a recursive struct value, or a\n list of values. A producer of value is expected to set one of these\n variants. Absence of any variant indicates an error.\n\n The JSON representation for `Value` is JSON value."
+      description: Create an entity chain for each token (JWT) in the request.
+    google.protobuf.Any:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+          format: binary
+        debug:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
+      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+    authorization.v2.Resource.AttributeValues:
+      type: object
+      properties:
+        fqns:
+          type: array
+          items:
+            type: string
+          title: fqns
+      title: AttributeValues
+      additionalProperties: false

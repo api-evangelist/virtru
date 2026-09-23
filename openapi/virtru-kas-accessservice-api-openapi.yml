@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: authorization authorization.AuthorizationService kas.AccessService API
+  title: Kas.Access Service API
   description: Get app info from the root path
 security: []
 tags:
@@ -47,7 +47,13 @@ paths:
       tags:
       - kas.AccessService
       summary: LegacyPublicKey
-      description: "Endpoint intended for gRPC Gateway's REST endpoint to provide v1 compatibility with older TDF clients\n\n This endpoint is not recommended for use in new applications, prefer the v2 endpoint ('PublicKey') instead.\n\n buf:lint:ignore RPC_RESPONSE_STANDARD_NAME"
+      description: 'Endpoint intended for gRPC Gateway''s REST endpoint to provide v1 compatibility with older TDF clients
+
+
+        This endpoint is not recommended for use in new applications, prefer the v2 endpoint (''PublicKey'') instead.
+
+
+        buf:lint:ignore RPC_RESPONSE_STANDARD_NAME'
       operationId: kas.AccessService.LegacyPublicKey
       parameters:
       - name: Connect-Protocol-Version
@@ -116,49 +122,27 @@ paths:
                 $ref: '#/components/schemas/kas.RewrapResponse'
 components:
   schemas:
-    connect-timeout-header:
-      type: number
-      title: Connect-Timeout-Ms
-      description: Define the timeout, in ms
-    kas.KeyAccessRewrapResult:
+    kas.PublicKeyRequest:
       type: object
-      oneOf:
-      - properties:
-          error:
-            type: string
-            title: error
-            description: "Error message when rewrap failed\n Present when status=\"fail\"\n Human-readable description of the failure reason"
-        title: error
-        required:
-        - error
-      - properties:
-          kasWrappedKey:
-            type: string
-            title: kas_wrapped_key
-            format: byte
-            description: "Successfully rewrapped key encrypted with the session key\n Present when status=\"permit\"\n Contains the DEK encrypted with the ephemeral session key"
-        title: kas_wrapped_key
-        required:
-        - kasWrappedKey
       properties:
-        metadata:
-          type: object
-          title: metadata
-          additionalProperties:
-            title: value
-            $ref: '#/components/schemas/google.protobuf.Value'
-          description: "Metadata associated with this KAO result (e.g., required obligations)\n Optional: May contain obligation requirements or other policy metadata\n Common keys: \"X-Required-Obligations\" with array of obligation FQNs"
-        keyAccessObjectId:
+        algorithm:
           type: string
-          title: key_access_object_id
-          description: "Identifier matching the key_access_object_id from the request\n Required: Always matches the ID from UnsignedRewrapRequest_WithKeyAccessObject"
-        status:
+          title: algorithm
+        fmt:
           type: string
-          title: status
-          description: "Status of the rewrap operation for this KAO\n Required: Always\n Values: \"permit\" (success), \"fail\" (failure)"
-      title: KeyAccessRewrapResult
+          title: fmt
+        v:
+          type: string
+          title: v
+      title: PublicKeyRequest
       additionalProperties: false
-      description: Result of a key access object rewrap operation
+    connect-protocol-version:
+      type: number
+      title: Connect-Protocol-Version
+      enum:
+      - 1
+      description: Define the version of the Connect protocol
+      const: 1
     kas.PolicyRewrapResult:
       type: object
       properties:
@@ -175,19 +159,20 @@ components:
       title: PolicyRewrapResult
       additionalProperties: false
       description: Result for all KAOs associated with a single policy
-    google.protobuf.Any:
+    google.protobuf.StringValue:
+      type: string
+      description: "Wrapper message for `string`.\n\n The JSON representation for `StringValue` is JSON string.\n\n Not recommended for use in new APIs, but still useful for legacy APIs and\n has no plan to be removed."
+    kas.PublicKeyResponse:
       type: object
       properties:
-        type:
+        publicKey:
           type: string
-        value:
+          title: public_key
+        kid:
           type: string
-          format: binary
-        debug:
-          type: object
-          additionalProperties: true
-      additionalProperties: true
-      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+          title: kid
+      title: PublicKeyResponse
+      additionalProperties: false
     kas.RewrapResponse:
       type: object
       properties:
@@ -264,51 +249,6 @@ components:
           title: algorithm
       title: LegacyPublicKeyRequest
       additionalProperties: false
-    kas.PublicKeyResponse:
-      type: object
-      properties:
-        publicKey:
-          type: string
-          title: public_key
-        kid:
-          type: string
-          title: kid
-      title: PublicKeyResponse
-      additionalProperties: false
-    connect-protocol-version:
-      type: number
-      title: Connect-Protocol-Version
-      enum:
-      - 1
-      description: Define the version of the Connect protocol
-      const: 1
-    google.protobuf.StringValue:
-      type: string
-      description: "Wrapper message for `string`.\n\n The JSON representation for `StringValue` is JSON string.\n\n Not recommended for use in new APIs, but still useful for legacy APIs and\n has no plan to be removed."
-    kas.PublicKeyRequest:
-      type: object
-      properties:
-        algorithm:
-          type: string
-          title: algorithm
-        fmt:
-          type: string
-          title: fmt
-        v:
-          type: string
-          title: v
-      title: PublicKeyRequest
-      additionalProperties: false
-    kas.RewrapRequest:
-      type: object
-      properties:
-        signedRequestToken:
-          type: string
-          title: signed_request_token
-          description: "A JWT signed by the DPoP (Demonstration of Proof of Possession) private key\n Required: Always\n Version differences:\n - v1 (legacy): Uses existing TDF spec schema in requestBody\n - v2 (bulk): Uses UnsignedRewrapRequest proto serialized as JSON in requestBody"
-      title: RewrapRequest
-      additionalProperties: false
-      description: Request to rewrap (decrypt and re-encrypt) TDF keys for client access
     google.protobuf.Value:
       oneOf:
       - type: 'null'
@@ -319,3 +259,69 @@ components:
       - type: object
         additionalProperties: true
       description: "`Value` represents a dynamically typed value which can be either\n null, a number, a string, a boolean, a recursive struct value, or a\n list of values. A producer of value is expected to set one of these\n variants. Absence of any variant indicates an error.\n\n The JSON representation for `Value` is JSON value."
+    kas.KeyAccessRewrapResult:
+      type: object
+      oneOf:
+      - properties:
+          error:
+            type: string
+            title: error
+            description: "Error message when rewrap failed\n Present when status=\"fail\"\n Human-readable description of the failure reason"
+        title: error
+        required:
+        - error
+      - properties:
+          kasWrappedKey:
+            type: string
+            title: kas_wrapped_key
+            format: byte
+            description: "Successfully rewrapped key encrypted with the session key\n Present when status=\"permit\"\n Contains the DEK encrypted with the ephemeral session key"
+        title: kas_wrapped_key
+        required:
+        - kasWrappedKey
+      properties:
+        metadata:
+          type: object
+          title: metadata
+          additionalProperties:
+            title: value
+            $ref: '#/components/schemas/google.protobuf.Value'
+          description: "Metadata associated with this KAO result (e.g., required obligations)\n Optional: May contain obligation requirements or other policy metadata\n Common keys: \"X-Required-Obligations\" with array of obligation FQNs"
+        keyAccessObjectId:
+          type: string
+          title: key_access_object_id
+          description: "Identifier matching the key_access_object_id from the request\n Required: Always matches the ID from UnsignedRewrapRequest_WithKeyAccessObject"
+        status:
+          type: string
+          title: status
+          description: "Status of the rewrap operation for this KAO\n Required: Always\n Values: \"permit\" (success), \"fail\" (failure)"
+      title: KeyAccessRewrapResult
+      additionalProperties: false
+      description: Result of a key access object rewrap operation
+    kas.RewrapRequest:
+      type: object
+      properties:
+        signedRequestToken:
+          type: string
+          title: signed_request_token
+          description: "A JWT signed by the DPoP (Demonstration of Proof of Possession) private key\n Required: Always\n Version differences:\n - v1 (legacy): Uses existing TDF spec schema in requestBody\n - v2 (bulk): Uses UnsignedRewrapRequest proto serialized as JSON in requestBody"
+      title: RewrapRequest
+      additionalProperties: false
+      description: Request to rewrap (decrypt and re-encrypt) TDF keys for client access
+    connect-timeout-header:
+      type: number
+      title: Connect-Timeout-Ms
+      description: Define the timeout, in ms
+    google.protobuf.Any:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+          format: binary
+        debug:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
+      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
