@@ -49,6 +49,16 @@ tags:
 - Encryption
 - Access Control
 - Zero Trust
+- Privacy
+- OpenTDF
+- Key Management
+tags_raw:
+- Company
+- Cybersecurity
+- Data Security
+- Encryption
+- Access Control
+- Zero Trust
 - Data Privacy
 - OpenTDF
 - Key Management
@@ -78,7 +88,7 @@ apis:
   - type: OpenAPI
     url: openapi/virtru-authorization-v2-authorizationservice-api-openapi.yml
 - aid: virtru:virtru-entityresolution-v2-entityresolutionservice-api
-  name: Virtru entityresolution.v2.EntityResolutionService API
+  name: Virtru Entityresolution.v2.Entity Resolution Service API
   description: >-
     The entityresolution.v2.EntityResolutionService API from Virtru — 2 operation(s) for entityresolution.v2.entityresolutionservice.
   humanURL: https://opentdf.io
@@ -90,7 +100,7 @@ apis:
   - type: OpenAPI
     url: openapi/virtru-entityresolution-v2-entityresolutionservice-api-openapi.yml
 - aid: virtru:virtru-kas-accessservice-api
-  name: Virtru kas.AccessService API
+  name: Virtru Kas.Access Service API
   description: Get app info from the root path
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
@@ -101,7 +111,7 @@ apis:
   - type: OpenAPI
     url: openapi/virtru-kas-accessservice-api-openapi.yml
 - aid: virtru:virtru-policy-actions-actionservice-api
-  name: Virtru policy.actions.ActionService API
+  name: Virtru Policy.actions.Action Service API
   description: >-
     The policy.actions.ActionService API from Virtru — 5 operation(s) for policy.actions.actionservice.
   humanURL: https://opentdf.io
@@ -113,7 +123,7 @@ apis:
   - type: OpenAPI
     url: openapi/virtru-policy-actions-actionservice-api-openapi.yml
 - aid: virtru:virtru-policy-attributes-attributesservice-api
-  name: Virtru policy.attributes.AttributesService API
+  name: Virtru Policy.attributes.Attributes Service API
   description: >-
     /
 
@@ -129,7 +139,7 @@ apis:
   - type: OpenAPI
     url: openapi/virtru-policy-attributes-attributesservice-api-openapi.yml
 - aid: virtru:virtru-policy-kasregistry-keyaccessserverregistryservice-api
-  name: Virtru policy.kasregistry.KeyAccessServerRegistryService API
+  name: Virtru Policy.kasregistry.Key Access Server Registry Service API
   description: >-
     The policy.kasregistry.KeyAccessServerRegistryService API from Virtru — 14 operation(s) for policy.kasregistry.keyaccessserverregistryservice.
   humanURL: https://opentdf.io
@@ -141,7 +151,7 @@ apis:
   - type: OpenAPI
     url: openapi/virtru-policy-kasregistry-keyaccessserverregistryservice-api-openapi.yml
 - aid: virtru:virtru-policy-keymanagement-keymanagementservice-api
-  name: Virtru policy.keymanagement.KeyManagementService API
+  name: Virtru Policy.keymanagement.Key Management Service API
   description: >-
     The policy.keymanagement.KeyManagementService API from Virtru — 5 operation(s) for policy.keymanagement.keymanagementservice.
   humanURL: https://opentdf.io
@@ -153,7 +163,7 @@ apis:
   - type: OpenAPI
     url: openapi/virtru-policy-keymanagement-keymanagementservice-api-openapi.yml
 - aid: virtru:virtru-policy-namespaces-namespaceservice-api
-  name: Virtru policy.namespaces.NamespaceService API
+  name: Virtru Policy.namespaces.Namespace Service API
   description: >-
     The policy.namespaces.NamespaceService API from Virtru — 9 operation(s) for policy.namespaces.namespaceservice.
   humanURL: https://opentdf.io
@@ -165,7 +175,7 @@ apis:
   - type: OpenAPI
     url: openapi/virtru-policy-namespaces-namespaceservice-api-openapi.yml
 - aid: virtru:virtru-policy-obligations-service-api
-  name: Virtru policy.obligations.Service API
+  name: Virtru Policy.obligations.Service API
   description: >-
     /
 
@@ -181,7 +191,7 @@ apis:
   - type: OpenAPI
     url: openapi/virtru-policy-obligations-service-api-openapi.yml
 - aid: virtru:virtru-policy-registeredresources-registeredresourcesservice-api
-  name: Virtru policy.registeredresources.RegisteredResourcesService API
+  name: Virtru Policy.registeredresources.Registered Resources Service API
   description: Registered Resources
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
@@ -192,7 +202,7 @@ apis:
   - type: OpenAPI
     url: openapi/virtru-policy-registeredresources-registeredresourcesservice-api-openapi.yml
 - aid: virtru:virtru-policy-resourcemapping-resourcemappingservice-api
-  name: Virtru policy.resourcemapping.ResourceMappingService API
+  name: Virtru Policy.resourcemapping.Resource Mapping Service API
   description: Resource Mapping Groups
   humanURL: https://opentdf.io
   baseURL: https://api.virtru.com
@@ -203,7 +213,7 @@ apis:
   - type: OpenAPI
     url: openapi/virtru-policy-resourcemapping-resourcemappingservice-api-openapi.yml
 - aid: virtru:virtru-policy-subjectmapping-subjectmappingservice-api
-  name: Virtru policy.subjectmapping.SubjectMappingService API
+  name: Virtru Policy.subjectmapping.Subject Mapping Service API
   description: >-
     The policy.subjectmapping.SubjectMappingService API from Virtru — 12 operation(s) for policy.subjectmapping.subjectmappingservice.
   humanURL: https://opentdf.io
@@ -215,7 +225,7 @@ apis:
   - type: OpenAPI
     url: openapi/virtru-policy-subjectmapping-subjectmappingservice-api-openapi.yml
 - aid: virtru:virtru-wellknownconfiguration-wellknownservice-api
-  name: Virtru wellknownconfiguration.WellKnownService API
+  name: Virtru Wellknownconfiguration.Well Known Service API
   description: >-
     The wellknownconfiguration.WellKnownService API from Virtru — 1 operation(s) for wellknownconfiguration.wellknownservice.
   humanURL: https://opentdf.io

@@ -122,46 +122,6 @@ paths:
                 $ref: '#/components/schemas/kas.RewrapResponse'
 components:
   schemas:
-    kas.PublicKeyRequest:
-      type: object
-      properties:
-        algorithm:
-          type: string
-          title: algorithm
-        fmt:
-          type: string
-          title: fmt
-        v:
-          type: string
-          title: v
-      title: PublicKeyRequest
-      additionalProperties: false
-    connect-protocol-version:
-      type: number
-      title: Connect-Protocol-Version
-      enum:
-      - 1
-      description: Define the version of the Connect protocol
-      const: 1
-    kas.PolicyRewrapResult:
-      type: object
-      properties:
-        policyId:
-          type: string
-          title: policy_id
-          description: "Policy identifier matching the policy.id from the request\n Required: Always matches the ID from UnsignedRewrapRequest_WithPolicy"
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/kas.KeyAccessRewrapResult'
-          title: results
-          description: "Results for each KAO under this policy\n Required: One result per KAO in the original request"
-      title: PolicyRewrapResult
-      additionalProperties: false
-      description: Result for all KAOs associated with a single policy
-    google.protobuf.StringValue:
-      type: string
-      description: "Wrapper message for `string`.\n\n The JSON representation for `StringValue` is JSON string.\n\n Not recommended for use in new APIs, but still useful for legacy APIs and\n has no plan to be removed."
     kas.PublicKeyResponse:
       type: object
       properties:
@@ -173,6 +133,38 @@ components:
           title: kid
       title: PublicKeyResponse
       additionalProperties: false
+    kas.LegacyPublicKeyRequest:
+      type: object
+      properties:
+        algorithm:
+          type: string
+          title: algorithm
+      title: LegacyPublicKeyRequest
+      additionalProperties: false
+    connect-timeout-header:
+      type: number
+      title: Connect-Timeout-Ms
+      description: Define the timeout, in ms
+    google.protobuf.Value:
+      oneOf:
+      - type: 'null'
+      - type: number
+      - type: string
+      - type: boolean
+      - type: array
+      - type: object
+        additionalProperties: true
+      description: "`Value` represents a dynamically typed value which can be either\n null, a number, a string, a boolean, a recursive struct value, or a\n list of values. A producer of value is expected to set one of these\n variants. Absence of any variant indicates an error.\n\n The JSON representation for `Value` is JSON value."
+    kas.RewrapRequest:
+      type: object
+      properties:
+        signedRequestToken:
+          type: string
+          title: signed_request_token
+          description: "A JWT signed by the DPoP (Demonstration of Proof of Possession) private key\n Required: Always\n Version differences:\n - v1 (legacy): Uses existing TDF spec schema in requestBody\n - v2 (bulk): Uses UnsignedRewrapRequest proto serialized as JSON in requestBody"
+      title: RewrapRequest
+      additionalProperties: false
+      description: Request to rewrap (decrypt and re-encrypt) TDF keys for client access
     kas.RewrapResponse:
       type: object
       properties:
@@ -208,6 +200,9 @@ components:
       title: RewrapResponse
       additionalProperties: false
       description: Response containing rewrapped keys and session information
+    google.protobuf.StringValue:
+      type: string
+      description: "Wrapper message for `string`.\n\n The JSON representation for `StringValue` is JSON string.\n\n Not recommended for use in new APIs, but still useful for legacy APIs and\n has no plan to be removed."
     connect.error:
       type: object
       properties:
@@ -241,24 +236,56 @@ components:
       title: Connect Error
       additionalProperties: true
       description: 'Error type returned by Connect: https://connectrpc.com/docs/go/errors/#http-representation'
-    kas.LegacyPublicKeyRequest:
+    google.protobuf.Any:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+          format: binary
+        debug:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
+      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+    kas.PolicyRewrapResult:
+      type: object
+      properties:
+        policyId:
+          type: string
+          title: policy_id
+          description: "Policy identifier matching the policy.id from the request\n Required: Always matches the ID from UnsignedRewrapRequest_WithPolicy"
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/kas.KeyAccessRewrapResult'
+          title: results
+          description: "Results for each KAO under this policy\n Required: One result per KAO in the original request"
+      title: PolicyRewrapResult
+      additionalProperties: false
+      description: Result for all KAOs associated with a single policy
+    connect-protocol-version:
+      type: number
+      title: Connect-Protocol-Version
+      enum:
+      - 1
+      description: Define the version of the Connect protocol
+      const: 1
+    kas.PublicKeyRequest:
       type: object
       properties:
         algorithm:
           type: string
           title: algorithm
-      title: LegacyPublicKeyRequest
+        fmt:
+          type: string
+          title: fmt
+        v:
+          type: string
+          title: v
+      title: PublicKeyRequest
       additionalProperties: false
-    google.protobuf.Value:
-      oneOf:
-      - type: 'null'
-      - type: number
-      - type: string
-      - type: boolean
-      - type: array
-      - type: object
-        additionalProperties: true
-      description: "`Value` represents a dynamically typed value which can be either\n null, a number, a string, a boolean, a recursive struct value, or a\n list of values. A producer of value is expected to set one of these\n variants. Absence of any variant indicates an error.\n\n The JSON representation for `Value` is JSON value."
     kas.KeyAccessRewrapResult:
       type: object
       oneOf:
@@ -298,30 +325,3 @@ components:
       title: KeyAccessRewrapResult
       additionalProperties: false
       description: Result of a key access object rewrap operation
-    kas.RewrapRequest:
-      type: object
-      properties:
-        signedRequestToken:
-          type: string
-          title: signed_request_token
-          description: "A JWT signed by the DPoP (Demonstration of Proof of Possession) private key\n Required: Always\n Version differences:\n - v1 (legacy): Uses existing TDF spec schema in requestBody\n - v2 (bulk): Uses UnsignedRewrapRequest proto serialized as JSON in requestBody"
-      title: RewrapRequest
-      additionalProperties: false
-      description: Request to rewrap (decrypt and re-encrypt) TDF keys for client access
-    connect-timeout-header:
-      type: number
-      title: Connect-Timeout-Ms
-      description: Define the timeout, in ms
-    google.protobuf.Any:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-          format: binary
-        debug:
-          type: object
-          additionalProperties: true
-      additionalProperties: true
-      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
