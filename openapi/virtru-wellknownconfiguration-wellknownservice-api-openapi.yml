@@ -46,6 +46,43 @@ components:
       type: number
       title: Connect-Timeout-Ms
       description: Define the timeout, in ms
+    wellknownconfiguration.GetWellKnownConfigurationRequest:
+      type: object
+      title: GetWellKnownConfigurationRequest
+      additionalProperties: false
+    connect-protocol-version:
+      type: number
+      title: Connect-Protocol-Version
+      enum:
+      - 1
+      description: Define the version of the Connect protocol
+      const: 1
+    google.protobuf.Struct:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/google.protobuf.Value'
+      description: "`Struct` represents a structured data value, consisting of fields\n which map to dynamically typed values. In some languages, `Struct`\n might be supported by a native representation. For example, in\n scripting languages like JS a struct is represented as an\n object. The details of that representation are described together\n with the proto support for the language.\n\n The JSON representation for `Struct` is JSON object."
+    wellknownconfiguration.GetWellKnownConfigurationResponse:
+      type: object
+      properties:
+        configuration:
+          title: configuration
+          $ref: '#/components/schemas/google.protobuf.Struct'
+      title: GetWellKnownConfigurationResponse
+      additionalProperties: false
+    google.protobuf.Any:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+          format: binary
+        debug:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
+      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
     connect.error:
       type: object
       properties:
@@ -79,43 +116,6 @@ components:
       title: Connect Error
       additionalProperties: true
       description: 'Error type returned by Connect: https://connectrpc.com/docs/go/errors/#http-representation'
-    google.protobuf.Struct:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/google.protobuf.Value'
-      description: "`Struct` represents a structured data value, consisting of fields\n which map to dynamically typed values. In some languages, `Struct`\n might be supported by a native representation. For example, in\n scripting languages like JS a struct is represented as an\n object. The details of that representation are described together\n with the proto support for the language.\n\n The JSON representation for `Struct` is JSON object."
-    wellknownconfiguration.GetWellKnownConfigurationResponse:
-      type: object
-      properties:
-        configuration:
-          title: configuration
-          $ref: '#/components/schemas/google.protobuf.Struct'
-      title: GetWellKnownConfigurationResponse
-      additionalProperties: false
-    connect-protocol-version:
-      type: number
-      title: Connect-Protocol-Version
-      enum:
-      - 1
-      description: Define the version of the Connect protocol
-      const: 1
-    google.protobuf.Any:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-          format: binary
-        debug:
-          type: object
-          additionalProperties: true
-      additionalProperties: true
-      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
-    wellknownconfiguration.GetWellKnownConfigurationRequest:
-      type: object
-      title: GetWellKnownConfigurationRequest
-      additionalProperties: false
     google.protobuf.Value:
       oneOf:
       - type: 'null'
