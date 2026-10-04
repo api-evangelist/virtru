@@ -1,0 +1,104 @@
+slug: virtru
+provider: Virtru
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: authorization.AuthorizationService
+  spec_file: virtru-authorization-authorizationservice-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.88
+  evidence: POST /authorization.AuthorizationService/GetDecisions; GetEntitlements; schemas authorization.DecisionResponse.Decision,
+    authorization.ResourceAttribute, policy.KeyAccessServer
+  reason: Attribute-based access control decision and entitlement resolution for data access — core identity
+    and access management (authorization enforcement).
+- tag: authorization.v2.AuthorizationService
+  spec_file: virtru-authorization-v2-authorizationservice-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.88
+  evidence: POST /authorization.v2.AuthorizationService/GetDecisionBulk; GetEntitlements; schemas authorization.v2.EntityEntitlements.ActionsList,
+    policy.KeyAccessServer
+  reason: Version 2 of the same ABAC authorization decision/entitlement service; access decisions for
+    entities over resources are identity and access management.
+- tag: policy.attributes.AttributesService
+  spec_file: virtru-policy-attributes-attributesservice-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: openapi description '/ / Attribute Service /'; GetEntitleableAttributesByFqns, GetKeyMappingsByFqns,
+    CreateAttribute, policy.SubjectMapping
+  reason: Administration of ABAC attributes and entitleable attribute values that govern who can decrypt
+    data — core access-control policy management.
+- tag: policy.subjectmapping.SubjectMappingService
+  spec_file: virtru-policy-subjectmapping-subjectmappingservice-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.82
+  evidence: MatchSubjectMappings, CreateSubjectConditionSet; schemas policy.SubjectSet, policy.SubjectConditionSet
+  reason: Defines which subjects (entities) match which attribute values, i.e. who is entitled to access
+    data — subject entitlement mapping is Identity & Access Management.
+- tag: entityresolution.v2.EntityResolutionService
+  spec_file: virtru-entityresolution-v2-entityresolutionservice-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: POST /entityresolution.v2.EntityResolutionService/ResolveEntities ... CreateEntityChainsFromTokens;
+    schemas entity.Token, entityresolution.v2.DirectEntitlement
+  reason: Resolves identity tokens into entity representations and entitlements for access decisions —
+    identity/entitlement resolution within the ABAC access-control platform, i.e. Identity & Access Management.
+- tag: policy.kasregistry.KeyAccessServerRegistryService
+  spec_file: virtru-policy-kasregistry-keyaccessserverregistryservice-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.78
+  evidence: CreateKey, RotateKey, SetBaseKey, ListKeyAccessServerGrants; schemas policy.KasPublicKey,
+    policy.KeyProviderConfig
+  reason: Registry and lifecycle of Key Access Servers and cryptographic keys (creation, rotation, grants)
+    — clearly cybersecurity capability; sub-capability ambiguous between access management and security
+    architecture, so L1 only.
+- tag: policy.keymanagement.KeyManagementService
+  spec_file: virtru-policy-keymanagement-keymanagementservice-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.75
+  evidence: CreateProviderConfig / GetProviderConfig / ListProviderConfigs; schema policy.KeyProviderConfig
+  reason: Configuration of cryptographic key providers (KMS) backing the encryption platform — a security
+    control capability; no single sub-capability is clearly named, so L1 only.
+- tag: kas.AccessService
+  spec_file: virtru-kas-accessservice-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /kas.AccessService/Rewrap ... kas.PolicyRewrapResult, kas.KeyAccessRewrapResult, kas.PublicKeyRequest
+  reason: Key Access Server endpoint that evaluates policy and rewraps data keys to grant decryption —
+    an access-decision/enforcement point. Maps to Cybersecurity, access control; some ambiguity with key/crypto
+    architecture.
+- tag: policy.actions.ActionService
+  spec_file: virtru-policy-actions-actionservice-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: CreateAction / UpdateAction / DeleteAction with schemas policy.SubjectConditionSet, policy.PolicyEnforcementPoint,
+    policy.ObligationValue
+  reason: CRUD over the 'actions' used in attribute-based access-control policy, evaluated by a policy
+    enforcement point — access policy administration, not a business-domain action.

@@ -242,6 +242,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/virtru-capability-edges.yml
+  name: Virtru Business Capability Map
 - type: Website
   url: https://www.virtru.com/
 - type: DeveloperPortal
