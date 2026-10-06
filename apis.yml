@@ -41,7 +41,7 @@ accessModel:
 image: https://www.virtru.com/hubfs/assets/images/logos/virtru/logomark/blue/virtru_LOGOMARKMASTER_BLUE_FINAL.png
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-10-06'
 tags:
 - Company
 - Cybersecurity
@@ -242,6 +242,10 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://www.virtru.com/newsroom
+  type: Blog
+- url: https://www.virtru.com/newsroom/rss.xml
+  type: BlogRSS
 - type: CapabilityMap
   url: capabilities/virtru-capability-edges.yml
   name: Virtru Business Capability Map
