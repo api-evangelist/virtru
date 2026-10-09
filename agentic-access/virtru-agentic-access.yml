@@ -1,39 +1,35 @@
-generated: '2026-07-21'
+generated: '2026-09-23'
 method: generated
-source: openapi/virtru-authorization-openapi.yaml, openapi/virtru-authorization-v2-openapi.yaml,
-  openapi/virtru-entity-resolution-v2-openapi.yaml, openapi/virtru-kas-openapi.yaml, openapi/virtru-policy-actions-openapi.yaml,
-  openapi/virtru-policy-attributes-openapi.yaml, openapi/virtru-policy-kas-registry-openapi.yaml,
-  openapi/virtru-policy-key-management-openapi.yaml, openapi/virtru-policy-namespaces-openapi.yaml,
-  openapi/virtru-policy-obligations-openapi.yaml, openapi/virtru-policy-registered-resources-openapi.yaml,
-  openapi/virtru-policy-resource-mapping-openapi.yaml, openapi/virtru-policy-subject-mapping-openapi.yaml,
-  openapi/virtru-wellknown-configuration-openapi.yaml
+source: openapi/virtru-authorization-authorizationservice-api-openapi.yml, openapi/virtru-authorization-v2-authorizationservice-api-openapi.yml,
+  openapi/virtru-entityresolution-v2-entityresolutionservice-api-openapi.yml, openapi/virtru-kas-accessservice-api-openapi.yml,
+  openapi/virtru-policy-actions-actionservice-api-openapi.yml, openapi/virtru-policy-attributes-attributesservice-api-openapi.yml,
+  openapi/virtru-policy-kasregistry-keyaccessserverregistryservice-api-openapi.yml, openapi/virtru-policy-keymanagement-keymanagementservice-api-openapi.yml,
+  openapi/virtru-policy-namespaces-namespaceservice-api-openapi.yml, openapi/virtru-policy-obligations-service-api-openapi.yml,
+  openapi/virtru-policy-registeredresources-registeredresourcesservice-api-openapi.yml, openapi/virtru-policy-resourcemapping-resourcemappingservice-api-openapi.yml,
+  openapi/virtru-policy-subjectmapping-subjectmappingservice-api-openapi.yml, openapi/virtru-wellknownconfiguration-wellknownservice-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 116
   by_action_class:
-    acting: 116
+    connected: 47
+    acting: 69
   by_consequence:
-    write: 116
+    read: 47
+    write: 69
   human_in_the_loop_required: 0
 operations:
 - path: /authorization.AuthorizationService/GetDecisions
   method: post
   operationId: authorization.AuthorizationService.GetDecisions
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /authorization.AuthorizationService/GetDecisionsByToken
   method: post
   operationId: authorization.AuthorizationService.GetDecisionsByToken
@@ -54,82 +50,52 @@ operations:
   method: post
   operationId: authorization.AuthorizationService.GetEntitlements
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /authorization.v2.AuthorizationService/GetDecision
   method: post
   operationId: authorization.v2.AuthorizationService.GetDecision
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /authorization.v2.AuthorizationService/GetDecisionMultiResource
   method: post
   operationId: authorization.v2.AuthorizationService.GetDecisionMultiResource
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /authorization.v2.AuthorizationService/GetDecisionBulk
   method: post
   operationId: authorization.v2.AuthorizationService.GetDecisionBulk
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /authorization.v2.AuthorizationService/GetEntitlements
   method: post
   operationId: authorization.v2.AuthorizationService.GetEntitlements
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /entityresolution.v2.EntityResolutionService/ResolveEntities
   method: post
   operationId: entityresolution.v2.EntityResolutionService.ResolveEntities
@@ -214,34 +180,22 @@ operations:
   method: post
   operationId: policy.actions.ActionService.GetAction
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.actions.ActionService/ListActions
   method: post
   operationId: policy.actions.ActionService.ListActions
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.actions.ActionService/CreateAction
   method: post
   operationId: policy.actions.ActionService.CreateAction
@@ -294,98 +248,62 @@ operations:
   method: post
   operationId: policy.attributes.AttributesService.ListAttributes
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.attributes.AttributesService/ListAttributeValues
   method: post
   operationId: policy.attributes.AttributesService.ListAttributeValues
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.attributes.AttributesService/GetAttribute
   method: post
   operationId: policy.attributes.AttributesService.GetAttribute
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.attributes.AttributesService/GetAttributeValuesByFqns
   method: post
   operationId: policy.attributes.AttributesService.GetAttributeValuesByFqns
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.attributes.AttributesService/GetKeyMappingsByFqns
   method: post
   operationId: policy.attributes.AttributesService.GetKeyMappingsByFqns
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.attributes.AttributesService/GetEntitleableAttributesByFqns
   method: post
   operationId: policy.attributes.AttributesService.GetEntitleableAttributesByFqns
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.attributes.AttributesService/CreateAttribute
   method: post
   operationId: policy.attributes.AttributesService.CreateAttribute
@@ -438,18 +356,12 @@ operations:
   method: post
   operationId: policy.attributes.AttributesService.GetAttributeValue
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.attributes.AttributesService/CreateAttributeValue
   method: post
   operationId: policy.attributes.AttributesService.CreateAttributeValue
@@ -630,34 +542,22 @@ operations:
   method: post
   operationId: policy.kasregistry.KeyAccessServerRegistryService.ListKeyAccessServers
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.kasregistry.KeyAccessServerRegistryService/GetKeyAccessServer
   method: post
   operationId: policy.kasregistry.KeyAccessServerRegistryService.GetKeyAccessServer
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.kasregistry.KeyAccessServerRegistryService/CreateKeyAccessServer
   method: post
   operationId: policy.kasregistry.KeyAccessServerRegistryService.CreateKeyAccessServer
@@ -710,18 +610,12 @@ operations:
   method: post
   operationId: policy.kasregistry.KeyAccessServerRegistryService.ListKeyAccessServerGrants
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.kasregistry.KeyAccessServerRegistryService/CreateKey
   method: post
   operationId: policy.kasregistry.KeyAccessServerRegistryService.CreateKey
@@ -742,34 +636,22 @@ operations:
   method: post
   operationId: policy.kasregistry.KeyAccessServerRegistryService.GetKey
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.kasregistry.KeyAccessServerRegistryService/ListKeys
   method: post
   operationId: policy.kasregistry.KeyAccessServerRegistryService.ListKeys
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.kasregistry.KeyAccessServerRegistryService/UpdateKey
   method: post
   operationId: policy.kasregistry.KeyAccessServerRegistryService.UpdateKey
@@ -822,34 +704,22 @@ operations:
   method: post
   operationId: policy.kasregistry.KeyAccessServerRegistryService.GetBaseKey
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.kasregistry.KeyAccessServerRegistryService/ListKeyMappings
   method: post
   operationId: policy.kasregistry.KeyAccessServerRegistryService.ListKeyMappings
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.keymanagement.KeyManagementService/CreateProviderConfig
   method: post
   operationId: policy.keymanagement.KeyManagementService.CreateProviderConfig
@@ -870,34 +740,22 @@ operations:
   method: post
   operationId: policy.keymanagement.KeyManagementService.GetProviderConfig
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.keymanagement.KeyManagementService/ListProviderConfigs
   method: post
   operationId: policy.keymanagement.KeyManagementService.ListProviderConfigs
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.keymanagement.KeyManagementService/UpdateProviderConfig
   method: post
   operationId: policy.keymanagement.KeyManagementService.UpdateProviderConfig
@@ -934,34 +792,22 @@ operations:
   method: post
   operationId: policy.namespaces.NamespaceService.GetNamespace
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.namespaces.NamespaceService/ListNamespaces
   method: post
   operationId: policy.namespaces.NamespaceService.ListNamespaces
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.namespaces.NamespaceService/CreateNamespace
   method: post
   operationId: policy.namespaces.NamespaceService.CreateNamespace
@@ -1078,50 +924,32 @@ operations:
   method: post
   operationId: policy.obligations.Service.ListObligations
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.obligations.Service/GetObligation
   method: post
   operationId: policy.obligations.Service.GetObligation
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.obligations.Service/GetObligationsByFQNs
   method: post
   operationId: policy.obligations.Service.GetObligationsByFQNs
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.obligations.Service/CreateObligation
   method: post
   operationId: policy.obligations.Service.CreateObligation
@@ -1174,34 +1002,22 @@ operations:
   method: post
   operationId: policy.obligations.Service.GetObligationValue
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.obligations.Service/GetObligationValuesByFQNs
   method: post
   operationId: policy.obligations.Service.GetObligationValuesByFQNs
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.obligations.Service/CreateObligationValue
   method: post
   operationId: policy.obligations.Service.CreateObligationValue
@@ -1254,18 +1070,12 @@ operations:
   method: post
   operationId: policy.obligations.Service.GetObligationTrigger
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.obligations.Service/AddObligationTrigger
   method: post
   operationId: policy.obligations.Service.AddObligationTrigger
@@ -1302,18 +1112,12 @@ operations:
   method: post
   operationId: policy.obligations.Service.ListObligationTriggers
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.registeredresources.RegisteredResourcesService/CreateRegisteredResource
   method: post
   operationId: policy.registeredresources.RegisteredResourcesService.CreateRegisteredResource
@@ -1334,34 +1138,22 @@ operations:
   method: post
   operationId: policy.registeredresources.RegisteredResourcesService.GetRegisteredResource
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.registeredresources.RegisteredResourcesService/ListRegisteredResources
   method: post
   operationId: policy.registeredresources.RegisteredResourcesService.ListRegisteredResources
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.registeredresources.RegisteredResourcesService/UpdateRegisteredResource
   method: post
   operationId: policy.registeredresources.RegisteredResourcesService.UpdateRegisteredResource
@@ -1414,50 +1206,32 @@ operations:
   method: post
   operationId: policy.registeredresources.RegisteredResourcesService.GetRegisteredResourceValue
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.registeredresources.RegisteredResourcesService/GetRegisteredResourceValuesByFQNs
   method: post
   operationId: policy.registeredresources.RegisteredResourcesService.GetRegisteredResourceValuesByFQNs
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.registeredresources.RegisteredResourcesService/ListRegisteredResourceValues
   method: post
   operationId: policy.registeredresources.RegisteredResourcesService.ListRegisteredResourceValues
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.registeredresources.RegisteredResourcesService/UpdateRegisteredResourceValue
   method: post
   operationId: policy.registeredresources.RegisteredResourcesService.UpdateRegisteredResourceValue
@@ -1494,34 +1268,22 @@ operations:
   method: post
   operationId: policy.resourcemapping.ResourceMappingService.ListResourceMappingGroups
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.resourcemapping.ResourceMappingService/GetResourceMappingGroup
   method: post
   operationId: policy.resourcemapping.ResourceMappingService.GetResourceMappingGroup
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.resourcemapping.ResourceMappingService/CreateResourceMappingGroup
   method: post
   operationId: policy.resourcemapping.ResourceMappingService.CreateResourceMappingGroup
@@ -1574,50 +1336,32 @@ operations:
   method: post
   operationId: policy.resourcemapping.ResourceMappingService.ListResourceMappings
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.resourcemapping.ResourceMappingService/ListResourceMappingsByGroupFqns
   method: post
   operationId: policy.resourcemapping.ResourceMappingService.ListResourceMappingsByGroupFqns
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.resourcemapping.ResourceMappingService/GetResourceMapping
   method: post
   operationId: policy.resourcemapping.ResourceMappingService.GetResourceMapping
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.resourcemapping.ResourceMappingService/CreateResourceMapping
   method: post
   operationId: policy.resourcemapping.ResourceMappingService.CreateResourceMapping
@@ -1686,34 +1430,22 @@ operations:
   method: post
   operationId: policy.subjectmapping.SubjectMappingService.ListSubjectMappings
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.subjectmapping.SubjectMappingService/GetSubjectMapping
   method: post
   operationId: policy.subjectmapping.SubjectMappingService.GetSubjectMapping
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.subjectmapping.SubjectMappingService/CreateSubjectMapping
   method: post
   operationId: policy.subjectmapping.SubjectMappingService.CreateSubjectMapping
@@ -1766,18 +1498,12 @@ operations:
   method: post
   operationId: policy.subjectmapping.SubjectMappingService.ListSubjectConditionSets
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /policy.subjectmapping.SubjectMappingService/GetSubjectConditionSet
   method: post
   operationId: policy.subjectmapping.SubjectMappingService.GetSubjectConditionSet
@@ -1862,15 +1588,9 @@ operations:
   method: post
   operationId: wellknownconfiguration.WellKnownService.GetWellKnownConfiguration
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
