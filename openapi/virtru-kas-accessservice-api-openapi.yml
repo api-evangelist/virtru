@@ -122,10 +122,145 @@ paths:
                 $ref: '#/components/schemas/kas.RewrapResponse'
 components:
   schemas:
+    connect.error:
+      type: object
+      properties:
+        code:
+          type: string
+          examples:
+          - not_found
+          enum:
+          - canceled
+          - unknown
+          - invalid_argument
+          - deadline_exceeded
+          - not_found
+          - already_exists
+          - permission_denied
+          - resource_exhausted
+          - failed_precondition
+          - aborted
+          - out_of_range
+          - unimplemented
+          - internal
+          - unavailable
+          - data_loss
+          - unauthenticated
+          description: The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
+        message:
+          type: string
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
+        detail:
+          $ref: '#/components/schemas/google.protobuf.Any'
+      title: Connect Error
+      additionalProperties: true
+      description: 'Error type returned by Connect: https://connectrpc.com/docs/go/errors/#http-representation'
+    google.protobuf.Value:
+      oneOf:
+      - type: 'null'
+      - type: number
+      - type: string
+      - type: boolean
+      - type: array
+      - type: object
+        additionalProperties: true
+      description: "`Value` represents a dynamically typed value which can be either\n null, a number, a string, a boolean, a recursive struct value, or a\n list of values. A producer of value is expected to set one of these\n variants. Absence of any variant indicates an error.\n\n The JSON representation for `Value` is JSON value."
+    google.protobuf.StringValue:
+      type: string
+      description: "Wrapper message for `string`.\n\n The JSON representation for `StringValue` is JSON string.\n\n Not recommended for use in new APIs, but still useful for legacy APIs and\n has no plan to be removed."
+    kas.PublicKeyResponse:
+      type: object
+      properties:
+        publicKey:
+          type: string
+          title: public_key
+        kid:
+          type: string
+          title: kid
+      title: PublicKeyResponse
+      additionalProperties: false
+    kas.PolicyRewrapResult:
+      type: object
+      properties:
+        policyId:
+          type: string
+          title: policy_id
+          description: "Policy identifier matching the policy.id from the request\n Required: Always matches the ID from UnsignedRewrapRequest_WithPolicy"
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/kas.KeyAccessRewrapResult'
+          title: results
+          description: "Results for each KAO under this policy\n Required: One result per KAO in the original request"
+      title: PolicyRewrapResult
+      additionalProperties: false
+      description: Result for all KAOs associated with a single policy
     connect-timeout-header:
       type: number
       title: Connect-Timeout-Ms
       description: Define the timeout, in ms
+    kas.RewrapResponse:
+      type: object
+      properties:
+        metadata:
+          type: object
+          title: metadata
+          additionalProperties:
+            title: value
+            $ref: '#/components/schemas/google.protobuf.Value'
+          description: "Deprecated: Legacy metadata field\n Modern responses use metadata in individual KeyAccessRewrapResult"
+          deprecated: true
+        entityWrappedKey:
+          type: string
+          title: entity_wrapped_key
+          format: byte
+          description: "Deprecated: Legacy single entity wrapped key\n Modern responses use kas_wrapped_key in KeyAccessRewrapResult"
+          deprecated: true
+        sessionPublicKey:
+          type: string
+          title: session_public_key
+          description: "KAS's ephemeral session public key in PEM format\n Required: For EC-based operations (key_type=\"ec-wrapped\")\n Optional: Empty for RSA-based or X-Wing-based ZTDF (key_type=\"wrapped\" or key_type=\"hybrid-wrapped\")\n Used by client to perform ECDH key agreement and decrypt the kas_wrapped_key values"
+        schemaVersion:
+          type: string
+          title: schema_version
+          description: "Deprecated: Legacy schema version identifier\n Modern responses use implicit versioning"
+          deprecated: true
+        responses:
+          type: array
+          items:
+            $ref: '#/components/schemas/kas.PolicyRewrapResult'
+          title: responses
+          description: "Policy-grouped rewrap results for the bulk API\n Required: Modern v2 API responses\n Each PolicyRewrapResult contains results for all KAOs under that policy"
+      title: RewrapResponse
+      additionalProperties: false
+      description: Response containing rewrapped keys and session information
+    kas.PublicKeyRequest:
+      type: object
+      properties:
+        algorithm:
+          type: string
+          title: algorithm
+        fmt:
+          type: string
+          title: fmt
+        v:
+          type: string
+          title: v
+      title: PublicKeyRequest
+      additionalProperties: false
+    google.protobuf.Any:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+          format: binary
+        debug:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
+      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
     kas.KeyAccessRewrapResult:
       type: object
       oneOf:
@@ -173,138 +308,6 @@ components:
           title: algorithm
       title: LegacyPublicKeyRequest
       additionalProperties: false
-    connect-protocol-version:
-      type: number
-      title: Connect-Protocol-Version
-      enum:
-      - 1
-      description: Define the version of the Connect protocol
-      const: 1
-    kas.PublicKeyResponse:
-      type: object
-      properties:
-        publicKey:
-          type: string
-          title: public_key
-        kid:
-          type: string
-          title: kid
-      title: PublicKeyResponse
-      additionalProperties: false
-    kas.RewrapResponse:
-      type: object
-      properties:
-        metadata:
-          type: object
-          title: metadata
-          additionalProperties:
-            title: value
-            $ref: '#/components/schemas/google.protobuf.Value'
-          description: "Deprecated: Legacy metadata field\n Modern responses use metadata in individual KeyAccessRewrapResult"
-          deprecated: true
-        entityWrappedKey:
-          type: string
-          title: entity_wrapped_key
-          format: byte
-          description: "Deprecated: Legacy single entity wrapped key\n Modern responses use kas_wrapped_key in KeyAccessRewrapResult"
-          deprecated: true
-        sessionPublicKey:
-          type: string
-          title: session_public_key
-          description: "KAS's ephemeral session public key in PEM format\n Required: For EC-based operations (key_type=\"ec-wrapped\")\n Optional: Empty for RSA-based or X-Wing-based ZTDF (key_type=\"wrapped\" or key_type=\"hybrid-wrapped\")\n Used by client to perform ECDH key agreement and decrypt the kas_wrapped_key values"
-        schemaVersion:
-          type: string
-          title: schema_version
-          description: "Deprecated: Legacy schema version identifier\n Modern responses use implicit versioning"
-          deprecated: true
-        responses:
-          type: array
-          items:
-            $ref: '#/components/schemas/kas.PolicyRewrapResult'
-          title: responses
-          description: "Policy-grouped rewrap results for the bulk API\n Required: Modern v2 API responses\n Each PolicyRewrapResult contains results for all KAOs under that policy"
-      title: RewrapResponse
-      additionalProperties: false
-      description: Response containing rewrapped keys and session information
-    kas.PolicyRewrapResult:
-      type: object
-      properties:
-        policyId:
-          type: string
-          title: policy_id
-          description: "Policy identifier matching the policy.id from the request\n Required: Always matches the ID from UnsignedRewrapRequest_WithPolicy"
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/kas.KeyAccessRewrapResult'
-          title: results
-          description: "Results for each KAO under this policy\n Required: One result per KAO in the original request"
-      title: PolicyRewrapResult
-      additionalProperties: false
-      description: Result for all KAOs associated with a single policy
-    kas.PublicKeyRequest:
-      type: object
-      properties:
-        algorithm:
-          type: string
-          title: algorithm
-        fmt:
-          type: string
-          title: fmt
-        v:
-          type: string
-          title: v
-      title: PublicKeyRequest
-      additionalProperties: false
-    google.protobuf.Any:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-          format: binary
-        debug:
-          type: object
-          additionalProperties: true
-      additionalProperties: true
-      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
-    google.protobuf.StringValue:
-      type: string
-      description: "Wrapper message for `string`.\n\n The JSON representation for `StringValue` is JSON string.\n\n Not recommended for use in new APIs, but still useful for legacy APIs and\n has no plan to be removed."
-    connect.error:
-      type: object
-      properties:
-        code:
-          type: string
-          examples:
-          - not_found
-          enum:
-          - canceled
-          - unknown
-          - invalid_argument
-          - deadline_exceeded
-          - not_found
-          - already_exists
-          - permission_denied
-          - resource_exhausted
-          - failed_precondition
-          - aborted
-          - out_of_range
-          - unimplemented
-          - internal
-          - unavailable
-          - data_loss
-          - unauthenticated
-          description: The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
-        message:
-          type: string
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
-        detail:
-          $ref: '#/components/schemas/google.protobuf.Any'
-      title: Connect Error
-      additionalProperties: true
-      description: 'Error type returned by Connect: https://connectrpc.com/docs/go/errors/#http-representation'
     kas.RewrapRequest:
       type: object
       properties:
@@ -315,13 +318,10 @@ components:
       title: RewrapRequest
       additionalProperties: false
       description: Request to rewrap (decrypt and re-encrypt) TDF keys for client access
-    google.protobuf.Value:
-      oneOf:
-      - type: 'null'
-      - type: number
-      - type: string
-      - type: boolean
-      - type: array
-      - type: object
-        additionalProperties: true
-      description: "`Value` represents a dynamically typed value which can be either\n null, a number, a string, a boolean, a recursive struct value, or a\n list of values. A producer of value is expected to set one of these\n variants. Absence of any variant indicates an error.\n\n The JSON representation for `Value` is JSON value."
+    connect-protocol-version:
+      type: number
+      title: Connect-Protocol-Version
+      enum:
+      - 1
+      description: Define the version of the Connect protocol
+      const: 1
