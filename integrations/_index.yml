@@ -76,3 +76,16 @@
       latest_authorization: '2025-03-17'
   status: not-a-workflow
   arazzo: null
+- slug: virtru-google-workspace-own
+  label: Google Workspace (own)
+  partner: google-workspace
+  partner_name: Google Workspace (own)
+  category: Google Workspace app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://workspace.google.com/marketplace/app/virtru_data_protection_for_google_worksp/197076597243
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
