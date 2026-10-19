@@ -89,3 +89,73 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: virtru-go-module-proxy
+  label: Go module proxy
+  partner_name: Go module proxy
+  category: official SDK (Go)
+  type: register
+  channel: package-registry
+  evidence: https://pkg.go.dev/github.com/opentdf/platform/sdk
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Go module proxy (public registry JSON)
+    spec_file: null
+    language: Go
+    packages:
+    - name: github.com/opentdf/platform/sdk
+      version: v0.35.0
+      released: '2026-10-15'
+      released_field: Time
+      lapsed: false
+      page: https://pkg.go.dev/github.com/opentdf/platform/sdk
+      repo_leg: github-org:opentdf
+      publisher_leg: org:opentdf
+      matched_by: github-org
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
+- slug: virtru-npm-registry
+  label: npm registry
+  partner: npm
+  partner_name: npm registry
+  category: official SDK (JavaScript/TypeScript)
+  type: register
+  channel: package-registry
+  evidence: https://www.npmjs.com/package/@opentdf/client
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@opentdf/client'
+      version: 1.3.0
+      released: '2025-03-20'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@opentdf/client
+      repo_leg: github-org:opentdf
+      publisher_leg: email:virtru.com
+      matched_by: domain
+    - name: '@opentdf/sdk'
+      version: 0.22.0
+      released: '2026-10-16'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@opentdf/sdk
+      repo_leg: github-org:opentdf
+      publisher_leg: email:virtru.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
